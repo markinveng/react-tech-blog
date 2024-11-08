@@ -6,7 +6,8 @@ export default function ContactPage() {
     <>
       <Header />
       <main>
-        Coming Soon...
+        <div>This is ContactPage</div>
+        <div>Coming soon...</div>
       </main>
     </>
   );

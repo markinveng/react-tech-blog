@@ -6,7 +6,8 @@ export default function BlogPage() {
     <>
       <Header />
       <main>
-        Coming Soon...
+        <div>This is BlogPage</div>
+        <div>Coming soon...</div>
       </main>
     </>
   );

@@ -6,7 +6,8 @@ export default function WorksPage() {
     <>
       <Header />
       <main>
-        Coming Soon...
+        <div>This is WorksPage</div>
+        <div>Coming soon...</div>
       </main>
     </>
   );
