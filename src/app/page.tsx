@@ -12,8 +12,7 @@ export default async function Home() {
       <main>
         <div>This is Homepage</div>
         <div>Coming soon...</div>
-        <div>デプロイテスト</div>
-        {/* <p>{data.contents[0].content}</p> */}
+        <p>{data.contents[0].content}</p>
       </main>
     </>
   );
