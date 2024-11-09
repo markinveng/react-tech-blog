@@ -8,9 +8,11 @@ type UseSimpleDarkMode = (isDark?: boolean) => {
 }
 
 // dark mode と light mode を切り替える
-export const useSimpleDarkMode: UseSimpleDarkMode = (isInitialDark = false) => {
+export const useSimpleDarkMode: UseSimpleDarkMode = (isInitialDark = true) => {
   const [isDarkMode, toggleTheme] = useState<boolean>(isInitialDark)
+
   const toggle = useCallback((isDark?: boolean | ((prevState: boolean) => boolean)) => {
+
     if (typeof isDark === 'undefined') {
       toggleTheme((state) => !state)
       return

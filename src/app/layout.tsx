@@ -7,7 +7,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Maiami",
-  description: "エンジニアHinoのポートフォリオサイトです。私がこれまでに手がけた制作物、身につけたスキルをまとめています。",
+  description: "エンジニアMaiamiのポートフォリオサイトです。私がこれまでに手がけた制作物、身につけたスキルをまとめています。",
 };
 
 export default function RootLayout({
@@ -17,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <body className={notojp.className}>{children}</body>
+      <body className={`${notojp.className} dark:bg-black bg-blue-100`} >{children}</body>
     </html>
   );
 }
