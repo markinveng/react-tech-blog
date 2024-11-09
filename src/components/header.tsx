@@ -10,8 +10,8 @@ export default function Header() {
   return (
     <header className="max-w-4xl m-auto py-4 sticky top-0 border-blue-200">
       <div className="flex justify-between items-end">
-        <Link href={"/"} className={`${playRightRO.className} ${defaultStyles.text} text-3xl`}>
-          <span className={`${defaultStyles.colorText}`}>M</span>aiami
+        <Link href={"/"} className={`${playRightRO.className} text-3xl`}>
+          <span className={`${defaultStyles.colorText}`}>M</span><span className={`${defaultStyles.text}`}>aiami</span>
         </Link>
         <nav>
           <ul className="flex gap-4 text-lg font-extrabold">
