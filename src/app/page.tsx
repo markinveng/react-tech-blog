@@ -1,18 +1,20 @@
+"use client"
 import Header from '@/components/header'
-import { client } from '@/libs/client'
+import { useSimpleDarkMode } from "@/libs/darkmode"
 import { defaultStyles } from '@/util/defaultStyles';
+import { playRightRO } from '@/util/font/font';
+import Image from "next/image";
+import { SiZenn } from "react-icons/si";
 
-export default async function Home() {
-  const data = await client.get({
-    endpoint: "blogs"
-  })
+export default function Home() {
+  const { isDarkMode, toggle } = useSimpleDarkMode();
   
   return (
     <>
       <div className='flex flex-row-reverse justify-between px-[50px]'>
-        <div className=''>
+        <div className='w-[80%]'>
           <Header />
-          <main className='px-[100px]'>
+          <main className=''>
             <div className=''>
               <div className='h-[2000px]'>
                 <h1 className={`${defaultStyles.text}`}>Maiami is a frontend and mobile app developer</h1>
@@ -25,12 +27,36 @@ export default async function Home() {
             </div>
           </main>
         </div>
-        <aside className='sticky top-[10px] h-[300px] border-2 border-black w-[300px]'>
-          <span className={`${defaultStyles.text}`}>Maiami</span>
-          <p className={`${defaultStyles.text}`}>About me</p>
-          <p className={`${defaultStyles.text}`}>Frontend and Mobile developer from Tokyo.</p>
-          <p className={`${defaultStyles.text}`}>Who is this icon?</p>
-          <p className={`${defaultStyles.text}`}>She is a character from the manga Jormungandr called Dr. Maiami.It&apos;s my favorite character.This site is designed with her favorite butterfly in mind.</p>
+        <aside className='sticky top-[10px] w-[300px] h-fit border-[1px] dark:border-[#334146] border-[#ded3d3] dark:bg-[#151515] bg-[#e8e8f1] rounded-[20px] p-7 dark:shadow-sm'>
+          <div className='flex gap-2 justify-center items-center'>
+            <Image
+              className="rounded-lg w-[32px] h-full"
+              src={"/aside/logo.png"}
+              alt="logo"
+              width={100}
+              height={100}
+            ></Image>
+            <span className={`${playRightRO.className} ${defaultStyles.text} text-2xl pt-[8px]`}>Maiami</span>
+          </div>
+          <Image
+            className="rounded-lg w-[150px] h-full mt-2 mx-auto"
+            src={"/aside/profile_icon.jpg"}
+            alt="avatar"
+            width={100}
+            height={100}
+          ></Image>
+          <div className='mt-2'>
+            <p className={`${defaultStyles.text} text-sm`}>About me</p>
+            <p className={`${defaultStyles.text} text-base mt-2 font-bold`}>Frontend and Mobile developer from Tokyo.</p>
+          </div>
+          <div className='mt-10'>
+            <p className={`${defaultStyles.text} text-sm`}>Who is this icon</p>
+            <p className={`${defaultStyles.text} text-base mt-2 font-bold`}>She is a character from the manga Jormungandr called Dr. Maiami.</p>
+          </div>
+          <div className='mt-10'>
+            <SiZenn color={`${isDarkMode ? "#fff" : "#000"}`} />
+          </div>
+          <div>{`${isDarkMode}`}</div>
         </aside>
       </div>
     </>

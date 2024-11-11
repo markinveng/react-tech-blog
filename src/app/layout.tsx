@@ -17,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <body className={`${notojp.className} dark:bg-gray-900 bg-blue-100`} >{children}</body>
+      <body className={`${notojp.className} dark:bg-[#0e0e0e] bg-[#e0e6ee]`} >{children}</body>
     </html>
   );
 }
