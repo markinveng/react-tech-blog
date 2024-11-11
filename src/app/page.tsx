@@ -59,19 +59,19 @@ export default function Home() {
             <p className={`${defaultStyles.text} text-base mt-2 font-bold`}>She is a character from the manga Jormungandr called Dr. Maiami.</p>
           </div>
           <div className='mt-10 flex gap-[10px] justify-center'>
-            <Link href={'https://zenn.dev/markinveng'} target='_blank' className='border dark:border-white border-black rounded-full p-[8px] dark:transition duration-300 dark:hover:shadow-[0_0px_20px_rgba(240,_46,_170,_0.7)] hover:shadow-[0_0px_20px_rgba(_0,0,_255,_0.7)]'>
+            <Link href={'https://zenn.dev/markinveng'} target='_blank' className='border dark:border-white border-black rounded-full p-[8px] dark:transition transition duration-300 dark:hover:shadow-[0_0px_20px_rgba(240,_46,_170,_0.7)] hover:shadow-[0_0px_20px_rgba(_0,0,_255,_0.7)]'>
               <SiZenn color={`${isDarkMode ? "#fff" : "#000"}`} size={20} />
             </Link>
-            <Link href={'https://github.com/markinveng'} target='_blank' className='border dark:border-white border-black rounded-full p-[8px] dark:transition duration-300 dark:hover:shadow-[0_0px_20px_rgba(240,_46,_170,_0.7)] hover:shadow-[0_0px_20px_rgba(_0,0,_255,_0.7)]'>
+            <Link href={'https://github.com/markinveng'} target='_blank' className='border dark:border-white border-black rounded-full p-[8px] dark:transition transition duration-300 dark:hover:shadow-[0_0px_20px_rgba(240,_46,_170,_0.7)] hover:shadow-[0_0px_20px_rgba(_0,0,_255,_0.7)]'>
               <LuGithub color={`${isDarkMode ? "#fff" : "#000"}`} size={20} />
             </Link>
-            <Link href={'https://x.com/BizMarkinveng'} target='_blank' className='border dark:border-white border-black rounded-full p-[8px] dark:transition duration-300 dark:hover:shadow-[0_0px_20px_rgba(240,_46,_170,_0.7)] hover:shadow-[0_0px_20px_rgba(_0,0,_255,_0.7)]'>
+            <Link href={'https://x.com/BizMarkinveng'} target='_blank' className='border dark:border-white border-black rounded-full p-[8px] dark:transition transition duration-300 dark:hover:shadow-[0_0px_20px_rgba(240,_46,_170,_0.7)] hover:shadow-[0_0px_20px_rgba(_0,0,_255,_0.7)]'>
               <FaTwitter color={`${isDarkMode ? "#fff" : "#000"}`} size={20} />
             </Link>
-            <Link href={'https://qiita.com/Maiami'} target='_blank' className='border dark:border-white border-black rounded-full p-[8px] dark:transition duration-300 dark:hover:shadow-[0_0px_20px_rgba(240,_46,_170,_0.7)] hover:shadow-[0_0px_20px_rgba(_0,0,_255,_0.7)]'>
+            <Link href={'https://qiita.com/Maiami'} target='_blank' className='border dark:border-white border-black rounded-full p-[8px] dark:transition transition duration-300 dark:hover:shadow-[0_0px_20px_rgba(240,_46,_170,_0.7)] hover:shadow-[0_0px_20px_rgba(_0,0,_255,_0.7)]'>
               <SiQiita color={`${isDarkMode ? "#fff" : "#000"}`} size={20} />
             </Link>
-            <Link href={'/contact'} className='border dark:border-white border-black rounded-full p-[8px] dark:transition duration-300 dark:hover:shadow-[0_0px_20px_rgba(240,_46,_170,_0.7)] hover:shadow-[0_0px_20px_rgba(_0,0,_255,_0.7)]'>
+            <Link href={'/contact'} className='border dark:border-white border-black rounded-full p-[8px] dark:transition transition duration-300 dark:hover:shadow-[0_0px_20px_rgba(240,_46,_170,_0.7)] hover:shadow-[0_0px_20px_rgba(_0,0,_255,_0.7)]'>
               <IoIosContact color={`${isDarkMode ? "#fff" : "#000"}`} size={20} />
             </Link>
           </div>
