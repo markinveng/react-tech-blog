@@ -1,12 +1,12 @@
 "use client"
 import { playRightRO } from "@/util/font/font";
 import { CiLight, CiDark } from "react-icons/ci";
-import { useSimpleDarkMode } from "@/libs/darkmode"
+import { useDarkMode } from "@/libs/darkmode"
 import Link from "next/link";
 import { defaultStyles } from "@/util/defaultStyles";
 
 export default function Header() {
-  const { isDarkMode, toggle } = useSimpleDarkMode()
+  const { isDarkMode, toggle } = useDarkMode()
   return (
     <header className="max-w-4xl m-auto py-4 sticky top-0 border-blue-200">
       <div className="flex justify-between items-end">

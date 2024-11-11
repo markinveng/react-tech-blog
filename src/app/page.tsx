@@ -1,14 +1,14 @@
 "use client"
 import Header from '@/components/header'
-import { useSimpleDarkMode } from "@/libs/darkmode"
+import { useDarkMode } from "@/libs/darkmode"
 import { defaultStyles } from '@/util/defaultStyles';
 import { playRightRO } from '@/util/font/font';
 import Image from "next/image";
 import { SiZenn } from "react-icons/si";
 
 export default function Home() {
-  const { isDarkMode, toggle } = useSimpleDarkMode();
-  
+  const { isDarkMode } = useDarkMode();
+
   return (
     <>
       <div className='flex flex-row-reverse justify-between px-[50px]'>
@@ -56,7 +56,6 @@ export default function Home() {
           <div className='mt-10'>
             <SiZenn color={`${isDarkMode ? "#fff" : "#000"}`} />
           </div>
-          <div>{`${isDarkMode}`}</div>
         </aside>
       </div>
     </>
