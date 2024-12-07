@@ -19,16 +19,14 @@ export default function Home() {
       <div className='flex flex-row-reverse justify-between px-[50px]'>
         <div className='w-[80%]'>
           <Header />
-          <main className=''>
-            <div className=''>
-              <div className='h-[2000px]'>
-                <h1 className={`${defaultStyles.text}`}>Maiami is a frontend and mobile app developer</h1>
-                <h2 className={`${defaultStyles.text}`}>About this site</h2>
-                <p className={`${defaultStyles.text}`}>This site is Maiami&apos;s portfolio site. I compile my past work history and the technology I use. I would like to send out a lot of information so that I can try new things.</p>
-                <h2 className={`${defaultStyles.text}`}>About me</h2>
-                <p className={`${defaultStyles.text}`}>Engineer born and raised in Tokyo.After graduating from the Department of Information Engineering, he got a job at a web production company and worked as a front-end and mobile application engineer.</p>
-                <h2 className={`${defaultStyles.text}`}>Skill</h2>
-              </div>
+          <main className='max-w-[500px] '>
+            <div className='h-[2000px]'>
+              <h1 className={`${defaultStyles.text}`}>Maiami is a frontend and mobile app developer</h1>
+              <h2 className={`${defaultStyles.text}`}>About this site</h2>
+              <p className={`${defaultStyles.text}`}>This site is Maiami&apos;s portfolio site. I compile my past work history and the technology I use. I would like to send out a lot of information so that I can try new things.</p>
+              <h2 className={`${defaultStyles.text}`}>About me</h2>
+              <p className={`${defaultStyles.text}`}>Engineer born and raised in Tokyo.After graduating from the Department of Information Engineering, he got a job at a web production company and worked as a front-end and mobile application engineer.</p>
+              <h2 className={`${defaultStyles.text}`}>Skill</h2>
             </div>
           </main>
         </div>
