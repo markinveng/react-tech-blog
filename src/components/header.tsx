@@ -8,8 +8,8 @@ import { defaultStyles } from "@/util/defaultStyles";
 export default function Header() {
   const { isDarkMode, toggle } = useDarkMode()
   return (
-    <header className="max-w-4xl m-auto py-4 sticky top-0 border-blue-200">
-      <div className="flex justify-between items-end">
+    <header className="sticky top-0 border-blue-200 backdrop-blur-lg z-10">
+      <div className="flex justify-between items-end max-w-4xl m-auto py-4">
         <Link href={"/"} className={`${playRightRO.className} text-3xl`}>
           <span className={`${defaultStyles.colorText}`}>M</span><span className={`${defaultStyles.text}`}>aiami</span>
         </Link>
