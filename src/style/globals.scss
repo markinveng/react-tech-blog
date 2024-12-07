@@ -1,0 +1,10 @@
+@import "./mixins";
+
+body {
+  background-color: #e0e6ee;
+  color: #000;
+  .dark & {
+    background-color: #0e0e0e;
+    color: #fff;
+  }
+}

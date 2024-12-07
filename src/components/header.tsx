@@ -4,24 +4,25 @@ import { CiLight, CiDark } from "react-icons/ci";
 import { useDarkMode } from "@/libs/darkmode"
 import Link from "next/link";
 import { defaultStyles } from "@/util/defaultStyles";
+import styles from '@/components/Header.module.scss'
 
 export default function Header() {
   const { isDarkMode, toggle } = useDarkMode()
   return (
-    <header className="sticky top-0 border-blue-200 backdrop-blur-lg z-10">
-      <div className="flex justify-between items-end max-w-4xl m-auto py-4">
-        <Link href={"/"} className={`${playRightRO.className} text-3xl`}>
+    <header className={`${styles.container}`}>
+      <div className={`${styles.wrapper}`}>
+        <Link href={"/"} className={`${playRightRO.className} ${styles.appHeader}`}>
           <span className={`${defaultStyles.colorText}`}>M</span><span className={`${defaultStyles.text}`}>aiami</span>
         </Link>
         <nav>
-          <ul className="flex gap-4 text-lg font-extrabold">
-            <li><Link href={"/"} className={`${defaultStyles.text}`}>Home</Link></li>
-            <li><Link href={"/works"} className={`${defaultStyles.text}`}>Works</Link></li>
-            <li><Link href={"/blog"} className={`${defaultStyles.text}`}>Blog</Link></li>
-            <li><Link href={"/contact"} className={`${defaultStyles.text}`}>Contact</Link></li>
+          <ul className={styles.navigationList}>
+            <li><Link href={"/"}>Home</Link></li>
+            <li><Link href={"/works"}>Works</Link></li>
+            <li><Link href={"/blog"}>Blog</Link></li>
+            <li><Link href={"/contact"}>Contact</Link></li>
           </ul>
         </nav>
-        <div className="flex items-center justify-between w-28">
+        <div className={`${styles.darkModeToggleButton}`}>
           <CiDark color={`${isDarkMode ? "#fff" : "#000"}`} size={28} />
           <label className="inline-flex items-center cursor-pointer">
             <input type="checkbox" value="" className="sr-only peer" onChange={() => toggle()} />

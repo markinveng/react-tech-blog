@@ -1,5 +1,5 @@
 "use client"
-import Header from '@/components/header'
+import Header from '@/components/Header'
 import { useDarkMode } from "@/libs/darkmode"
 import { defaultStyles } from '@/util/defaultStyles';
 import { playRightRO } from '@/util/font/font';
@@ -19,14 +19,23 @@ export default function Home() {
       <Header />
       <div className='flex flex-row-reverse justify-between px-[50px]'>
         <div className='w-[80%]'>
-          <main className='max-w-[500px] '>
+          <main className='max-w-8xl'>
             <div className='h-[2000px]'>
-              <h1 className={`${defaultStyles.text}`}>Maiami is a frontend and mobile app developer</h1>
-              <h2 className={`${defaultStyles.text}`}>About this site</h2>
-              <p className={`${defaultStyles.text}`}>This site is Maiami&apos;s portfolio site. I compile my past work history and the technology I use. I would like to send out a lot of information so that I can try new things.</p>
-              <h2 className={`${defaultStyles.text}`}>About me</h2>
-              <p className={`${defaultStyles.text}`}>Engineer born and raised in Tokyo.After graduating from the Department of Information Engineering, he got a job at a web production company and worked as a front-end and mobile application engineer.</p>
-              <h2 className={`${defaultStyles.text}`}>Skill</h2>
+              <section>
+                <div className='py-16'>
+                  <h1 className={`${defaultStyles.text} text-8xl`}>Maiami is a <br /> frontend and mobile <br /> app developer</h1>
+                </div>
+                <section>
+                  <h2 className={`${defaultStyles.text}`}>About this site</h2>
+                  <p className={`${defaultStyles.text}`}>This site is Maiami&apos;s portfolio site. I compile my past work history and the technology I use. I would like to send out a lot of information so that I can try new things.</p>
+                </section>
+                <section>
+                  <h2 className={`${defaultStyles.text}`}>About me</h2>
+                  <p className={`${defaultStyles.text}`}>Engineer born and raised in Tokyo.After graduating from the Department of Information Engineering, he got a job at a web production company and worked as a front-end and mobile application engineer.</p>
+                </section>
+                <h2 className={`${defaultStyles.text}`}>Skill</h2>
+                <p>This is a Skill Area</p>
+              </section>
             </div>
           </main>
         </div>

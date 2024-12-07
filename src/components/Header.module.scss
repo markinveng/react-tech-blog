@@ -1,0 +1,38 @@
+.container {
+  position: sticky;
+  top: -1px;
+  backdrop-filter: blur(16px);
+  z-index: 10;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  max-width: 56rem;
+  margin: 0 auto;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.appHeader {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
+.navigationList {
+  display: flex;
+  gap: 4px;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-weight: 800;
+}
+
+.darkModeToggleButton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 7rem;
+}
+
+// .switch
