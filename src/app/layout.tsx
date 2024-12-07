@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notojp, } from "@/util/font/font";
 
 import "./globals.css";
+import { DarkModeProvider } from "@/libs/darkmode";
 
 
 
@@ -17,7 +18,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <body className={`${notojp.className} dark:bg-gray-900 bg-blue-100`} >{children}</body>
+      <DarkModeProvider>
+        <body className={`${notojp.className} dark:bg-[#0e0e0e] bg-[#e0e6ee]`} >{children}</body>
+      </DarkModeProvider>
     </html>
   );
 }

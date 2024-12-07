@@ -1,7 +1,10 @@
 import Header from '@/components/header'
+import { client } from '@/libs/client';
 
-export default function BlogPage() {
-
+export default async function BlogPage() {
+  const data = await client.get({
+    endpoint: "blogs"
+  });
   return (
     <>
       <Header />
