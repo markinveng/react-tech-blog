@@ -35,4 +35,38 @@
   width: 7rem;
 }
 
-// .switch
+.switchLabel {
+  display: inline-block;
+  position: relative;
+  width: 50px;
+  height: 30px;
+  border-radius: 50px;
+  background-color: #dddddd;
+  cursor: pointer;
+  transition: background-color 0.4s;
+
+  &:has(:checked) {
+    background-color: #a3a9e8;
+  }
+
+  &::after {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgb(0 0 0 / 20%);
+    background-color: #fff;
+    content: "";
+    transition: left 0.4s;
+  }
+
+  &:has(:checked)::after {
+    left: 22px;
+  }
+
+  & input {
+    display: none;
+  }
+}
