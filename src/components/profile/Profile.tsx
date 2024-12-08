@@ -1,5 +1,4 @@
 "use client"
-import { defaultStyles } from '@/util/defaultStyles';
 import { playRightRO } from '@/util/font/font';
 import Image from "next/image";
 import { SiZenn } from "react-icons/si";
@@ -23,7 +22,7 @@ export default function Profile() {
           width={100}
           height={100}
         ></Image>
-        <span className={`${playRightRO.className} ${defaultStyles.text} text-2xl pt-[8px]`}>Maiami</span>
+        <span className={`${playRightRO.className} ${styles.profileName}`}>Maiami</span>
       </div>
       <Image
         className={`${styles.profileImage}`}
