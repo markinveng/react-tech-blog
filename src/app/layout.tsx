@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { notojp, } from "@/util/font/font";
 import '../style/globals.scss';
 
-import "./globals.css";
 import { DarkModeProvider } from "@/libs/darkmode";
 
 
