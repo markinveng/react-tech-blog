@@ -1,0 +1,25 @@
+.pointer {
+  width: 40px;
+  height: 40px;
+  background: rgb(195, 28, 209, 0.75);
+  position: fixed;
+  top: -20px;
+  left: -20px;
+  border-radius: 50%;
+  transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1) 0.001s transform;
+  pointer-events: none;
+  z-index: 999;
+}
+
+.smallPointer {
+  width: 15px;
+  height: 15px;
+  top: -7.5px;
+  left: -7.5px;
+  position: fixed;
+  background: rgb(195, 28, 209, 0.5);
+  transition: 0.2s cubic-bezier(0.075, 0.82, 0.165, 1) transform;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 998;
+}
