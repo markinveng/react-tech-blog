@@ -1,4 +1,4 @@
-import Header from '@/components/Header'
+import Header from '@/components/header/Header'
 import { client } from '@/libs/client';
 
 export default async function BlogPage() {

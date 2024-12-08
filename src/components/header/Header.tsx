@@ -3,8 +3,7 @@ import { playRightRO } from "@/util/font/font";
 import { CiLight, CiDark } from "react-icons/ci";
 import { useDarkMode } from "@/libs/darkmode"
 import Link from "next/link";
-import { defaultStyles } from "@/util/defaultStyles";
-import styles from '@/components/Header.module.scss'
+import styles from '@/components/header/Header.module.scss';
 
 export default function Header() {
   const { isDarkMode, toggle } = useDarkMode()
@@ -12,7 +11,7 @@ export default function Header() {
     <header className={`${styles.container}`}>
       <div className={`${styles.wrapper}`}>
         <Link href={"/"} className={`${playRightRO.className} ${styles.appHeader}`}>
-          <span className={`${defaultStyles.colorText}`}>M</span><span className={`${defaultStyles.text}`}>aiami</span>
+          <span className={`${styles.appTitle}`}>M</span><span>aiami</span>
         </Link>
         <nav>
           <ul className={styles.navigationList}>
