@@ -44,7 +44,30 @@
 }
 
 .aboutThisSiteDetail {
-  margin-top: 150px;
+  margin: 150px auto 0;
+  width: 790px;
+  font-size: 24px;
+  text-align: center;
+  line-height: 2;
+}
+
+.aboutMe {
+  position: absolute;
+  top: 110px;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+.aboutMeTitle {
+  text-align: center;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.aboutMeDetail {
+  margin: 150px auto 0;
+  width: 790px;
   font-size: 24px;
   text-align: center;
   line-height: 2;

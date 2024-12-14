@@ -34,9 +34,9 @@ export default function Home() {
                 </section>
               </SwiperSlide>
               <SwiperSlide>
-                <section>
-                  <h2 className={`${""}`}>About me</h2>
-                  <p className={`${""}`}>Engineer born and raised in Tokyo.After graduating from the Department of Information Engineering, he got a job at a web production company and worked as a front-end and mobile application engineer.</p>
+                <section className={`${styles.aboutMe}`}>
+                  <h2 className={`${styles.aboutMeTitle}`}>About me</h2>
+                  <p className={`${styles.aboutMeDetail}`}>Engineer born and raised in Tokyo.<br />I mainly work on front-end and mobile development.<br />I am also studying animation and music.</p>
                 </section>
               </SwiperSlide>
               <SwiperSlide>
