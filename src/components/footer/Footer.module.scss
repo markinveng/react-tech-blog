@@ -1,13 +1,15 @@
 .container {
-  position: absolute;
-  bottom: 0;
   width: 100%;
   text-align: center;
-  z-index: 100;
   margin-top: 10px;
   padding-top: 10px;
   padding-bottom: 10px;
   font-size: .88rem;
+  :global(.homePage) & {
+    position: absolute;
+    bottom: 0;
+    z-index: 100;
+  }
 }
 
 .contactWrapper {
