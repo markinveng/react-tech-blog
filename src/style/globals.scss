@@ -17,3 +17,37 @@ a {
     color: #fff;
   }
 }
+
+.swiper-button-prev,
+.swiper-button-next {
+  color: #a3a9e8 !important;
+  opacity: 0.8;
+  transition: 0.5s;
+  .dark & {
+    color: #fff !important;
+    opacity: 0.9;
+  }
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.swiper-pagination {
+  color: #fff;
+  .dark & {
+    color: #fff;
+  }
+  bottom: -10px;
+  &-bullet {
+    background: #a3a9e8 !important;
+    .dark & {
+      background: #fff !important;
+    }
+  }
+  &-bullet-active {
+    background: #a3a9e8 !important;
+    .dark & {
+      background: #fff !important;
+    }
+  }
+}

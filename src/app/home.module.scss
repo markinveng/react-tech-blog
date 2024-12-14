@@ -1,20 +1,30 @@
+.swiperWrapper {
+  position: relative;
+}
+
 .flexWrapper {
   display: flex;
+  place-content: center;
+  place-items: center;
   flex-direction: row-reverse;
   justify-content: center;
   gap: 100px;
-  margin: 0 auto;
+  width: 95%;
+  height: 100%;
+  align-items: center;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
 }
 
 .mainWrapper {
-  width: 80%;
+  width: 65%;
   max-width: 80rem;
-  height: 2000px;
 }
 
 .keyVisualTitle {
   font-size: 5rem;
   line-height: 1;
-  padding-top: 325px;
-  padding-bottom: 16px;
+  padding: 325px 0 60px 52px;
 }
