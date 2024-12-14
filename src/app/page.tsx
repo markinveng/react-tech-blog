@@ -17,7 +17,7 @@ export default function Home() {
         <main className={styles.mainWrapper}>
           <section className={styles.swiperWrapper}>
             {/* スタイリング中はAutoplayをつけない */}
-            <Swiper modules={[Navigation, Pagination]}
+            <Swiper modules={[Navigation, Pagination, Autoplay]}
               navigation={{ prevEl: "#button_prev", nextEl: "#button_next" }}
               pagination={{ clickable: true }}
               touchEventsTarget='container'
