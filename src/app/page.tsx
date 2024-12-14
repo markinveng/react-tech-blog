@@ -17,7 +17,7 @@ export default function Home() {
         <main className={styles.mainWrapper}>
           <section className={styles.swiperWrapper}>
             {/* スタイリング中はAutoplayをつけない */}
-            <Swiper modules={[Navigation, Pagination, Autoplay]}
+            <Swiper modules={[Navigation, Pagination]}
               navigation={{ prevEl: "#button_prev", nextEl: "#button_next" }}
               pagination={{ clickable: true }}
               touchEventsTarget='container'
@@ -28,9 +28,9 @@ export default function Home() {
                 <h1 className={`${styles.keyVisualTitle}`}>Maiami is a <br /> frontend and mobile <br /> app developer</h1>
               </SwiperSlide>
               <SwiperSlide>
-                <section>
-                  <h2 className={`${""}`}>About this site</h2>
-                  <p className={`${""}`}>This site is Maiami&apos;s portfolio site. I compile my past work history and the technology I use. I would like to send out a lot of information so that I can try new things.</p>
+                <section className={`${styles.aboutThisSite}`}>
+                  <h2 className={`${styles.aboutThisSiteTitle}`}>About this site</h2>
+                  <p className={`${styles.aboutThisSiteDetail}`}>This site is Maiamis portfolio site.<br />I compile my past work history and the technology I use.<br />I would like to send out a lot of information so that I can try new things.</p>
                 </section>
               </SwiperSlide>
               <SwiperSlide>
