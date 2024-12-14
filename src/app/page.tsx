@@ -8,6 +8,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import Footer from '@/components/footer/Footer';
+import Skill from '@/components/skill/Skill';
 
 export default function Home() {
 
@@ -41,12 +42,7 @@ export default function Home() {
                 </section>
               </SwiperSlide>
               <SwiperSlide>
-                <section className={`${styles.skill}`}>
-                  <h2 className={`${styles.skillTitle}`}>Skill</h2>
-                  <div className={`${styles.skillDetail}`}>
-                    This is a Skill Area
-                  </div>
-                </section>
+                <Skill />
               </SwiperSlide>
             </Swiper>
             <div id="button_prev" className="swiper-button-prev"></div>

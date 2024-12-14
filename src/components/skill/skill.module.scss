@@ -1,0 +1,139 @@
+.skill {
+  position: absolute;
+  top: 12px;
+  bottom: 0;
+  right: 0;
+  width: 80%;
+  left: 50%;
+  height: 570px;
+  transform: translateX(-50%);
+  overflow-y: scroll;
+}
+
+.skill::-webkit-scrollbar {
+  display: none;
+}
+
+.skillTitle {
+  text-align: center;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.skillDetail {
+}
+
+.skillLevelWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  column-gap: 50px;
+  row-gap: 5px;
+  margin-top: 10px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.skillRateTitle {
+  text-align: center;
+  display: inline-block;
+  width: 100%;
+  margin-top: 40px;
+  font-size: 18px;
+}
+
+.skillListWrapper {
+  margin-top: 20px;
+}
+
+.skillListTitle {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.skillList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 20px;
+  justify-content: left;
+}
+
+.icon {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.star {
+  &1,
+  &2,
+  &3,
+  &4 {
+    font-size: 16px;
+    min-width: 200px;
+    display: flex;
+    align-items: end;
+  }
+
+  &1 {
+    &::after {
+      content: "★";
+      display: inline-block;
+      min-width: 64px;
+      margin-left: 5px;
+    }
+  }
+  &2 {
+    &::after {
+      content: "★★";
+      display: inline-block;
+      min-width: 64px;
+      margin-left: 5px;
+    }
+  }
+  &3 {
+    &::after {
+      content: "★★★";
+      display: inline-block;
+      min-width: 64px;
+      margin-left: 5px;
+    }
+  }
+  &4 {
+    &::after {
+      content: "★★★★";
+      display: inline-block;
+      min-width: 64px;
+      margin-left: 5px;
+    }
+  }
+}
+
+.skillLevelWrapper {
+  & .star {
+    &1 {
+      min-width: 250px;
+      &::after {
+        min-width: 50px;
+      }
+    }
+    &2 {
+      min-width: 170px;
+      &::after {
+        min-width: 50px;
+      }
+    }
+    &3 {
+      min-width: 170px;
+      &::after {
+        min-width: 50px;
+      }
+    }
+    &4 {
+      min-width: 170px;
+      &::after {
+        min-width: 50px;
+      }
+    }
+  }
+}
