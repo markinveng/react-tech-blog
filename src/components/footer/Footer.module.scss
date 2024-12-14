@@ -1,0 +1,28 @@
+.container {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  z-index: 100;
+  margin-top: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: .88rem;
+}
+
+.contactWrapper {
+  text-align: center;
+}
+
+.contact {
+  &:hover {
+    opacity: .8;
+  }
+}
+
+.termsAndPrivacy {
+  text-decoration: underline;
+  &:hover {
+    opacity: .8;
+  }
+}

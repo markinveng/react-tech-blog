@@ -7,6 +7,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
+import Footer from '@/components/footer/Footer';
 
 export default function Home() {
 
@@ -40,9 +41,11 @@ export default function Home() {
                 </section>
               </SwiperSlide>
               <SwiperSlide>
-                <section>
-                  <h2 className={`${""}`}>Skill</h2>
-                  <p>This is a Skill Area</p>
+                <section className={`${styles.skill}`}>
+                  <h2 className={`${styles.skillTitle}`}>Skill</h2>
+                  <div className={`${styles.skillDetail}`}>
+                    This is a Skill Area
+                  </div>
                 </section>
               </SwiperSlide>
             </Swiper>
@@ -52,6 +55,7 @@ export default function Home() {
         </main>
         <Profile />
       </div>
+      <Footer />
     </>
   );
 }
