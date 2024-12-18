@@ -19,10 +19,11 @@ export default function Pointer() {
   }, []);
   return (
     <>
-      <div className={`${styles.pointer}`} style={{ transform: `translate(${mouseX}px, ${mouseY}px)` }}>
+      {/* 検証ツールを開くと重くなるので開発中は削除する */}
+      {/* <div className={`${styles.pointer}`} style={{ transform: `translate(${mouseX}px, ${mouseY}px)` }}>
       </div>
       <div className={`${styles.smallPointer}`} style={{ transform: `translate(${mouseX}px, ${mouseY}px)` }}>
-      </div>
+      </div> */}
     </>
   )
 }
