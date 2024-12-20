@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "NODE_ENV=development next dev",
+    "build": "NODE_ENV=production next build ",
     "start": "next start",
     "lint": "next lint"
   },
@@ -23,6 +23,9 @@
     "@types/react-dom": "^18",
     "eslint": "^8",
     "eslint-config-next": "14.2.5",
-    "typescript": "5.7.2"
+    "typescript": "5.8.2"
+  },
+  "volta": {
+    "node": "20.18.1"
   }
 }
