@@ -1,6 +1,6 @@
 import Header from '@/components/header/Header'
 
-export default function ContactPage() {
+export default function ContactPage(): JSX.Element {
 
   return (
     <>

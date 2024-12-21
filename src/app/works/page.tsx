@@ -6,15 +6,15 @@ import { LIMIT_PER_CATEGORY, WORK_CATEGORY_ID } from '@/_constants/blog';
 import { BlogContent } from '@/components/BlogContent/BlogContent';
 import { Blog, CategoryWithBlogs, MicroCMSListResponse } from '@/_type/blog';
 
-export default async function WorksPage() {
+export default async function WorksPage(): Promise<JSX.Element> {
   //カテゴリに該当する記事一覧を取得
   const allWorksData: MicroCMSListResponse<Blog>[] = await Promise.all(
-    WORK_CATEGORY_ID.map((categoryId) => {
+    WORK_CATEGORY_ID.map((categoryId: string) => {
       return getBlogsByCategory(categoryId, LIMIT_PER_CATEGORY);
     })
   )
   // データ構造: [{ categoryId: "category1Id", blogs: [...] }, ...]
-  const blogs: CategoryWithBlogs[] = allWorksData.map((data, index) => ({
+  const blogs: CategoryWithBlogs[] = allWorksData.map((data: MicroCMSListResponse<Blog>, index: number) => ({
     categoryId: WORK_CATEGORY_ID[index],
     blogs: data.contents || [],
   }));

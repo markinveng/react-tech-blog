@@ -8,7 +8,7 @@ type BlogContentProps = {
 }
 
 
-export const BlogContent: React.FC<BlogContentProps> = ({ blogArea }) => {
+export const BlogContent: React.FC<BlogContentProps> = ({ blogArea }: BlogContentProps) => {
   const [selectedTab, setSelectedTab] = useState(0);
   // 現在選択中のカテゴリの記事
   //const currentBlogs = blogArea[selectedTab]?.blogs || [];
@@ -16,7 +16,7 @@ export const BlogContent: React.FC<BlogContentProps> = ({ blogArea }) => {
   return (
     <>
       <ul className={`${styles.tabList}`}>
-        {blogArea.map((category, index) => (
+        {blogArea.map((category: CategoryWithBlogs, index: number) => (
           <li
             key={category.categoryId}
             className={`${styles.tab} ${index === selectedTab ? styles.active : ""

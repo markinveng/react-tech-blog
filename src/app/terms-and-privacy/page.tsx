@@ -3,7 +3,7 @@ import Header from '@/components/header/Header'
 import styles from '@/app/terms-and-privacy/page.module.scss';
 import Link from 'next/link';
 
-export default function TermsAndPrivacyPage() {
+export default function TermsAndPrivacyPage(): JSX.Element {
 
   return (
     <>

@@ -3,7 +3,7 @@ import Header from '@/components/header/Header'
 import styles from "@/app/blog/page.module.scss"
 
 
-export default async function BlogPage() {
+export default async function BlogPage(): Promise<JSX.Element> {
   return (
     <>
       <div className={`${styles.flexWrapper}`}>

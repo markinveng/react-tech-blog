@@ -8,14 +8,14 @@ type DarkModeContextType = {
   toggle: (isDark?: boolean) => void
 }
 
-const DarkModeContext = createContext<DarkModeContextType | undefined>(undefined)
+const DarkModeContext: React.Context<DarkModeContextType | undefined> = createContext<DarkModeContextType | undefined>(undefined)
 
 export const DarkModeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isDarkMode, setIsDarkMode] = useState<boolean>(true)
 
-  const toggle = useCallback((isDark?: boolean | ((prevState: boolean) => boolean)) => {
+  const toggle: (isDark?: boolean | ((prevState: boolean) => boolean)) => void = useCallback((isDark?: boolean | ((prevState: boolean) => boolean)) => {
     if (typeof isDark === 'undefined') {
-      setIsDarkMode((state) => !state)
+      setIsDarkMode((state: boolean) => !state)
     } else {
       setIsDarkMode(isDark)
     }
