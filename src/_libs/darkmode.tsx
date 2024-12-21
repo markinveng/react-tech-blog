@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/typedef */
 // useSimpleDarkMode.ts
 "use client"
 // DarkModeProvider.tsx
