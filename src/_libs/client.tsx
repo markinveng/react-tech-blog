@@ -1,4 +1,5 @@
-import { createClient, MicroCMSQueries } from 'microcms-js-sdk';
+import { Blog } from '@/_type/blog';
+import { createClient, MicroCMSListResponse } from 'microcms-js-sdk';
 import { notFound } from 'next/navigation';
 
 export const client = createClient({
@@ -6,26 +7,18 @@ export const client = createClient({
   apiKey: process.env.NEXT_PUBLIC_API_KEY || '',
 });
 
-// カテゴリー一覧を取得
-export const getCategoriesList = async (queries: MicroCMSQueries) => {
-  try {
-    const response = await client.getList({
-      endpoint: "categories",
-      queries,
-    });
-    return response;
-  } catch (error) {
-    console.error("getCategoriesListでエラーが発生しました", error);
-    notFound();
-  }
-};
-
 // 記事一覧を取得
-export const getBlogs = async (queries: MicroCMSQueries) => {
+export const getBlogsByCategory = async (
+  categoryId: String,
+  limit: number
+): Promise<MicroCMSListResponse<Blog>> => {
   try {
-    const response = await client.getList({
+    const response: MicroCMSListResponse<Blog> = await client.getList({
       endpoint: "blogs",
-      queries,
+      queries: {
+        filters: `category[equals]${categoryId}`,
+        limit
+      },
     });
     return response;
   } catch (error) {

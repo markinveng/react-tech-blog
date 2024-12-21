@@ -1,61 +1,32 @@
 import Footer from '@/components/footer/Footer';
 import Header from '@/components/header/Header'
 import styles from "@/app/works/page.module.scss"
-import { getBlogs, getCategoriesList } from "@/_libs/client";
-import { notFound } from 'next/navigation';
-import { LIMIT } from '@/_constants/blog';
-import Link from 'next/link';
+import { getBlogsByCategory } from "@/_libs/client";
+import { LIMIT_PER_CATEGORY, WORK_CATEGORY_ID } from '@/_constants/blog';
+import { BlogContent } from '@/components/BlogContent/BlogContent';
+import { Blog, CategoryWithBlogs, MicroCMSListResponse } from '@/_type/blog';
 
 export default async function WorksPage() {
-  // ブログ一覧を取得
-  const articlesListQueries = { limit: LIMIT };
-  const articlesListResponse = await getBlogs(articlesListQueries).catch(() => notFound());
+  //カテゴリに該当する記事一覧を取得
+  const allWorksData: MicroCMSListResponse<Blog>[] = await Promise.all(
+    WORK_CATEGORY_ID.map((categoryId) => {
+      return getBlogsByCategory(categoryId, LIMIT_PER_CATEGORY);
+    })
+  )
+  // データ構造: [{ categoryId: "category1Id", blogs: [...] }, ...]
+  const blogs: CategoryWithBlogs[] = allWorksData.map((data, index) => ({
+    categoryId: WORK_CATEGORY_ID[index],
+    blogs: data.contents || [],
+  }));
 
-  // カテゴリ一覧を取得
-  const categoriesListQueries = { limit: 10 };
-  const categoriesListResponse = await getCategoriesList(categoriesListQueries).catch(() => notFound());
-  console.log(categoriesListResponse);
-
-
-  // 記事データが存在しない場合は何も表示しない
-  if (!articlesListResponse?.contents || articlesListResponse.contents.length === 0) {
-    return <p>No articles found.</p>;
-  }
-
+  // 初期タブの状態
   return (
     <>
       <div className={`${styles.flexWrapper}`}>
         <Header />
         <main>
           <h1 className={`${styles.title}`}>Works</h1>
-
-          <div>
-            {
-              categoriesListResponse.contents.map(item => (
-                <Link href={`/category/${item.id}`} key={item.id} className={`${styles.categoryLink}`}>
-                  {item.category}
-                </Link>
-              ))
-            }
-          </div>
-
-          {/* 記事リストを表示 */}
-          <div>
-            {articlesListResponse.contents.map(article => (
-              <div key={article.id} className={`${styles.article}`}>
-                <h2>{article.title}</h2>
-              </div>
-            ))}
-          </div>
-
-
-
-          {/* <ul className={`${styles.tabList}`}>
-            <li className={`${styles.tab}`}>Development</li>
-            <li className={`${styles.tab}`}>Design</li>
-            <li className={`${styles.tab}`}>Music</li>
-          </ul> */}
-          {/* <ul className={`${styles.worksList}`} /> */}
+          <BlogContent blogArea={blogs} />
         </main>
         <Footer className={`${styles.footer}`} />
       </div>
