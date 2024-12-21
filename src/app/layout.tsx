@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { notojp, } from "@/util/font/font";
 import '@/style/globals.scss';
-
-import { DarkModeProvider } from "@/libs/darkmode";
+import { DarkModeProvider } from "@/_libs/darkmode";
 import Pointer from "@/components/pointer/Pointer";
 
 

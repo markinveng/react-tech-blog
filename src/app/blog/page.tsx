@@ -1,6 +1,6 @@
 import Footer from '@/components/footer/Footer';
 import Header from '@/components/header/Header'
-import { client } from '@/libs/client';
+import { client } from '@/_libs/client';
 import styles from "@/app/blog/page.module.scss"
 
 

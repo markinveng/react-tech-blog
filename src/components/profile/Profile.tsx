@@ -7,7 +7,7 @@ import { FaTwitter } from "react-icons/fa";
 import { SiQiita } from "react-icons/si";
 import { IoIosContact } from "react-icons/io";
 import Link from 'next/link';
-import { useDarkMode } from '@/libs/darkmode';
+import { useDarkMode } from '@/_libs/darkmode';
 import styles from "@/components/profile/profile.module.scss";
 
 export default function Profile() {

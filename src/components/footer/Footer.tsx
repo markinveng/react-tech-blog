@@ -1,5 +1,6 @@
 import Link from "next/link";
-import styles from "@/components/footer/Footer.module.scss"
+import styles from "@/components/footer/Footer.module.scss";
+
 interface FooterProps {
   className?: string;
 }
