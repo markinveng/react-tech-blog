@@ -11,7 +11,7 @@ type BlogContentProps = {
 export const BlogContent: React.FC<BlogContentProps> = ({ blogArea }) => {
   const [selectedTab, setSelectedTab] = useState(0);
   // 現在選択中のカテゴリの記事
-  const currentBlogs = blogArea[selectedTab]?.blogs || [];
+  //const currentBlogs = blogArea[selectedTab]?.blogs || [];
 
   return (
     <>

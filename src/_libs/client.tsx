@@ -9,7 +9,7 @@ export const client = createClient({
 
 // 記事一覧を取得
 export const getBlogsByCategory = async (
-  categoryId: String,
+  categoryId: string,
   limit: number
 ): Promise<MicroCMSListResponse<Blog>> => {
   try {

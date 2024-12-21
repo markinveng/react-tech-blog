@@ -1,13 +1,9 @@
 import Footer from '@/components/footer/Footer';
 import Header from '@/components/header/Header'
-import { client } from '@/_libs/client';
 import styles from "@/app/blog/page.module.scss"
 
 
 export default async function BlogPage() {
-  const data = await client.get({
-    endpoint: "blogs"
-  });
   return (
     <>
       <div className={`${styles.flexWrapper}`}>

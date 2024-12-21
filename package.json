@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^8.18.1",
+    "eslint-config-prettier": "^9.1.0",
     "microcms-js-sdk": "^3.1.2",
     "next": "^14.2.20",
     "react": "^18",
@@ -21,7 +23,8 @@
     "@types/node": "20.17.10",
     "@types/react": "18.3.17",
     "@types/react-dom": "^18",
-    "eslint": "^8",
+    "@typescript-eslint/parser": "^8.18.1",
+    "eslint": "^8.57.1",
     "eslint-config-next": "14.2.5",
     "typescript": "5.7.2"
   },
