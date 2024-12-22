@@ -6,6 +6,8 @@ import {
   CategoryName,
   Blog,
 } from '@/_type/blog';
+import { removeAfterHyphen } from '@/_libs/util';
+import TabIcon from './tabIcon/TabIcon';
 
 type BlogContentProps = {
   blogArea: CategoryWithBlogs[];
@@ -20,35 +22,40 @@ export const BlogContent: React.FC<BlogContentProps> = ({
 
   return (
     <>
-      <ul className={styles.tabList}>
+      <nav className={styles.tabList}>
         {blogArea.map((category: CategoryWithBlogs, index: number) => {
           // 現在ループ中のカテゴリIDと一致するカテゴリ名を探す
-          const foundCategory : CategoryName | undefined = categoryList.find(
-            (cat : CategoryName) => cat.categoryId === category.categoryId
+          const foundCategory: CategoryName | undefined = categoryList.find(
+            (cat: CategoryName) => cat.categoryId === category.categoryId
           );
           // タブに表示する文字
-          const tabLabel : string =
+          const tabLabel: string =
             foundCategory
-              ? `${foundCategory.categoryJP} / ${foundCategory.categoryEN}`
-              : category.categoryId; // 見つからなかった場合はカテゴリIDを表示
+              ? `${removeAfterHyphen(foundCategory.categoryEN)}`
+              : category.categoryId;
 
           return (
-            <li
+            <button
               key={category.categoryId}
-              className={`${styles.tab} ${
-                index === selectedTab ? styles.active : ""
-              }`}
+              className={`${styles.tab} ${index === selectedTab ? styles.active : ""
+                }`}
               onClick={() => setSelectedTab(index)}
             >
-              {tabLabel}
-            </li>
+              <div className={styles.tabIcon}>
+                <TabIcon categoryId={category.categoryId} />
+              </div>
+              <span className={styles.tabTitle}>{tabLabel}</span>
+            </button>
           );
         })}
-      </ul>
-      {/* 選択中のブログ記事一覧を表示する場合は以下のように使う */}
+      </nav>
       <ul>
-        {blogArea[selectedTab]?.blogs.map((blog : Blog) => (
-          <li key={blog.id}>{blog.title}</li>
+        {blogArea[selectedTab]?.blogs.map((blog: Blog) => (
+          <li key={blog.id}>
+            <span>
+              {blog.title}
+            </span>
+          </li>
         ))}
       </ul>
     </>

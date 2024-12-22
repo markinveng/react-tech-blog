@@ -1,0 +1,103 @@
+.tabList {
+  display: flex;
+  margin-top: 40px !important;
+  margin: 0 auto;
+  max-width: 500px;
+  justify-content: center;
+  gap: 50px;
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.1);
+  }
+}
+
+.tab {
+  position: relative;
+  cursor: pointer;
+  width: 100px;
+  font-size: 13px;
+  font-weight: 500;
+  border: transparent;
+  border-radius: 34%;
+  background: transparent;
+  &.active {
+    animation-duration: 500ms;
+    animation-fill-mode: forwards;
+    animation-name: scaleIn;
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 34%;
+    border: 2px solid transparent;
+    z-index: 1;
+    background: linear-gradient(135deg, rgb(162, 163, 165), rgb(198, 156, 200))
+      border-box border-box;
+    -webkit-mask: linear-gradient(#000 0 0) padding-box,
+      linear-gradient(#000 0 0) border-box;
+    -webkit-mask-composite: destination-out;
+    mask: linear-gradient(0 0 0) padding-box, linear-gradient(0 0 0) border-box;
+    mask-composite: exclude;
+    :global(.dark) & {
+      background: linear-gradient(135deg, rgb(77, 77, 77), rgb(199, 225, 223))
+        border-box border-box;
+      -webkit-mask: linear-gradient(#000 0 0) padding-box,
+        linear-gradient(#000 0 0) border-box;
+      -webkit-mask-composite: destination-out;
+      mask: linear-gradient(0 0 0) padding-box,
+        linear-gradient(0 0 0) border-box;
+      mask-composite: exclude;
+    }
+  }
+  &.active::after {
+    background: linear-gradient(
+        135deg,
+        rgb(74, 234, 220) 0%,
+        rgb(151, 120, 209) 20%,
+        rgb(207, 42, 186) 40%,
+        rgb(238, 44, 130) 60%,
+        rgb(251, 105, 98) 80%,
+        rgb(254, 248, 76) 100%
+      )
+      border-box border-box;
+    -webkit-mask: linear-gradient(#000 0 0) padding-box,
+      linear-gradient(#000 0 0) border-box;
+    -webkit-mask-composite: destination-out;
+    mask: linear-gradient(0 0 0) padding-box, linear-gradient(0 0 0) border-box;
+    mask-composite: exclude;
+  }
+}
+
+.tabIcon {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 34%;
+}
+
+.tabTitle {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  bottom: -40px;
+  font-size: 18px;
+  color: #000;
+  .tab.active & {
+    font-weight: 700;
+  }
+  :global(.dark) & {
+    color: #fff;
+  }
+}

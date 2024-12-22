@@ -5,7 +5,7 @@ import { useDarkMode } from "@/_libs/darkmode"
 import Link from "next/link";
 import styles from '@/components/header/Header.module.scss';
 
-export default function Header() {
+export default function Header(): JSX.Element {
   const { isDarkMode, toggle } = useDarkMode()
   return (
     <header className={`${styles.container}`}>
