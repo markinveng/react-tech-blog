@@ -13,11 +13,13 @@ import Link from 'next/link';
 type BlogContentProps = {
   blogArea: CategoryWithBlogs[];
   categoryList: CategoryName[];
+  pageName: string;
 };
 
 export const BlogContent: React.FC<BlogContentProps> = ({
   blogArea,
   categoryList,
+  pageName
 }: BlogContentProps) => {
   const [selectedTab, setSelectedTab] = useState(0);
   const [animate, setAnimate] = useState(false);
@@ -63,7 +65,7 @@ export const BlogContent: React.FC<BlogContentProps> = ({
       <ul className={`${styles.blogList} ${animate ? styles.fadeIn : ''}`}>
         {blogArea[selectedTab]?.blogs.map((blog: Blog) => (
           <li key={blog.id}>
-            <Link href={`/works/${blog.id}`} className={`${styles.blogItem}`}>
+            <Link href={`/${pageName}/${blog.id}`} className={`${styles.blogItem}`}>
               {blog.eyecatch && blog.eyecatch.url && (
                 <div className={styles.blogEyecatch}>
                   <img

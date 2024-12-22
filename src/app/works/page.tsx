@@ -13,6 +13,7 @@ import {
 } from '@/_type/blog';
 
 export default async function WorksPage(): Promise<JSX.Element> {
+  const pageName = 'works'
   // カテゴリ情報の取得
   // microCMSのレスポンスが [ { contents: Category[] }, ... ] になる想定
   const categoryList: MicroCMSListResponse<Category>[] = await Promise.all(
@@ -64,7 +65,7 @@ export default async function WorksPage(): Promise<JSX.Element> {
         <Header />
         <main>
           <h1 className={`${styles.title}`}>Works</h1>
-          <BlogContent blogArea={blogs} categoryList={categoryNames} />
+          <BlogContent blogArea={blogs} categoryList={categoryNames} pageName={pageName} />
         </main>
         <Footer className={`${styles.footer}`} />
       </div>
