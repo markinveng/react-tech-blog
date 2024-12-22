@@ -80,7 +80,7 @@ export const BlogContent: React.FC<BlogContentProps> = ({
                 {new Date(blog.publishedAt).toLocaleDateString("ja-JP")}
               </time>
               <span className={styles.blogTitle}>
-                {blog.title.length > 15 ? blog.title.substring(0, 20) + "..." : blog.title}
+                {blog.title.length > 20 ? blog.title.substring(0, 20) + "..." : blog.title}
               </span>
             </Link>
           </li>
