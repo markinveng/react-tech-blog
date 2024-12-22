@@ -8,6 +8,7 @@ import {
 } from '@/_type/blog';
 import { removeAfterHyphen } from '@/_libs/util';
 import TabIcon from './tabIcon/TabIcon';
+import Link from 'next/link';
 
 type BlogContentProps = {
   blogArea: CategoryWithBlogs[];
@@ -61,27 +62,25 @@ export const BlogContent: React.FC<BlogContentProps> = ({
       </nav>
       <ul className={`${styles.blogList} ${animate ? styles.fadeIn : ''}`}>
         {blogArea[selectedTab]?.blogs.map((blog: Blog) => (
-          <li key={blog.id} className={`${styles.blogItem}`}>
-            {/* アイキャッチ画像 */}
-            {blog.eyecatch && blog.eyecatch.url && (
-              <div className={styles.blogEyecatch}>
-                <img
-                  src={blog.eyecatch.url}
-                  alt={blog.title}
-                  width={blog.eyecatch.width}
-                  height={blog.eyecatch.height}
-                />
-              </div>
-            )}
-            {/* 日付（publishedAt を使用している例） */}
-            <time className={styles.blogDate} dateTime={blog.publishedAt}>
-              {new Date(blog.publishedAt).toLocaleDateString("ja-JP")}
-            </time>
-
-            {/* タイトル */}
-            <span className={styles.blogTitle}>
-              {blog.title.length > 15 ? blog.title.substring(0, 20) + "..." : blog.title}
-            </span>
+          <li key={blog.id}>
+            <Link href={`/works/${blog.id}`} className={`${styles.blogItem}`}>
+              {blog.eyecatch && blog.eyecatch.url && (
+                <div className={styles.blogEyecatch}>
+                  <img
+                    src={blog.eyecatch.url}
+                    alt={blog.title}
+                    width={blog.eyecatch.width}
+                    height={blog.eyecatch.height}
+                  />
+                </div>
+              )}
+              <time className={styles.blogDate} dateTime={blog.publishedAt}>
+                {new Date(blog.publishedAt).toLocaleDateString("ja-JP")}
+              </time>
+              <span className={styles.blogTitle}>
+                {blog.title.length > 15 ? blog.title.substring(0, 20) + "..." : blog.title}
+              </span>
+            </Link>
           </li>
         ))}
       </ul>

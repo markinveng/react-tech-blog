@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/typedef */
 import { Blog, Category } from '@/_type/blog';
-import { createClient, MicroCMSListResponse } from 'microcms-js-sdk';
+import { createClient, MicroCMSContentId, MicroCMSListResponse } from 'microcms-js-sdk';
 import { notFound } from 'next/navigation';
 
 // eslint-disable-next-line @typescript-eslint/typedef
@@ -43,3 +43,19 @@ export const getCategories = async (categoryId: string): Promise<MicroCMSListRes
     notFound();
   }
 }
+
+type BlogSingle = MicroCMSContentId & Blog;
+
+export async function getBlogById(id: string): Promise<BlogSingle> {
+  try {
+    const response = await client.get<BlogSingle>({
+      endpoint: "blogs",
+      contentId: id
+    });
+    return response;
+  } catch (error) {
+    console.error("getCategoriesでエラーが発生しました", error);
+    notFound();
+  }
+}
+

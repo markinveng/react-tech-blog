@@ -20,6 +20,7 @@ export type Blog = {
     height: number;
     width: number;
   };
+  name: string
   category: Category;
 };
 
