@@ -9,6 +9,7 @@ import {
 import { removeAfterHyphen } from '@/_libs/util';
 import TabIcon from './tabIcon/TabIcon';
 import Link from 'next/link';
+import Image from 'next/image';
 
 type BlogContentProps = {
   blogArea: CategoryWithBlogs[];
@@ -24,7 +25,7 @@ export const BlogContent: React.FC<BlogContentProps> = ({
   const [selectedTab, setSelectedTab] = useState(0);
   const [animate, setAnimate] = useState(false);
 
-  const handleTabChange = (index: number) => {
+  const handleTabChange: (index: number) => void = (index: number): void => {
     setAnimate(false);
     setSelectedTab(index);
   };
@@ -64,26 +65,28 @@ export const BlogContent: React.FC<BlogContentProps> = ({
       </nav>
       <ul className={`${styles.blogList} ${animate ? styles.fadeIn : ''}`}>
         {blogArea[selectedTab]?.blogs.map((blog: Blog) => (
-          <li key={blog.id}>
-            <Link href={`/${pageName}/${blog.id}`} className={`${styles.blogItem}`}>
-              {blog.eyecatch && blog.eyecatch.url && (
-                <div className={styles.blogEyecatch}>
-                  <img
+          <Link key={blog.id} href={`/${pageName}/${blog.id}`} className={`${styles.blogItem}`}>
+            <li className={styles.blogItemWrapper}>
+              <div className={styles.blogEyecatch}>
+                {blog.eyecatch && blog.eyecatch.url ? (
+                  <Image
                     src={blog.eyecatch.url}
                     alt={blog.title}
                     width={blog.eyecatch.width}
                     height={blog.eyecatch.height}
                   />
-                </div>
-              )}
-              <time className={styles.blogDate} dateTime={blog.publishedAt}>
-                {new Date(blog.publishedAt).toLocaleDateString("ja-JP")}
-              </time>
-              <span className={styles.blogTitle}>
-                {blog.title.length > 20 ? blog.title.substring(0, 20) + "..." : blog.title}
-              </span>
-            </Link>
-          </li>
+                ) : (<div className={styles.tabIconWrapper}><TabIcon categoryId={blog.category.id} /></div>)}
+              </div>
+              <div className={styles.blogItemLower}>
+                <time className={styles.blogDate} dateTime={blog.publishedAt}>
+                  {new Date(blog.publishedAt).toLocaleDateString("ja-JP")}
+                </time>
+                <span className={styles.blogTitle}>
+                  {blog.title.substring(0, 35) + "..."}
+                </span>
+              </div>
+            </li>
+          </Link>
         ))}
       </ul>
     </>
