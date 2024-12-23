@@ -13,7 +13,7 @@ import {
 } from '@/_type/blog';
 
 export default async function WorksPage(): Promise<JSX.Element> {
-  const pageName = 'works'
+  const pageName : string = 'works'
   // カテゴリ情報の取得
   // microCMSのレスポンスが [ { contents: Category[] }, ... ] になる想定
   const categoryList: MicroCMSListResponse<Category>[] = await Promise.all(

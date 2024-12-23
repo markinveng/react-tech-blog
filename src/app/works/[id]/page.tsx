@@ -4,15 +4,15 @@ import { getBlogById } from '@/_libs/client';
 import styles from '@/app/works/[id]/page.module.scss';
 import Header from '@/components/header/Header';
 import { MicroCMSContentId } from 'microcms-js-sdk';
+import Image from 'next/image';
 import { Blog } from '@/_type/blog';
 import Footer from '@/components/footer/Footer';
-import ReactMarkdown from 'react-markdown';
 
 // 「単一記事」を表す型
 type BlogSingle = MicroCMSContentId & Blog;
 
 // 動的ルーティングされたページコンポーネント
-export default async function WorksDetailPage({ params }: { params: { id: string } }) {
+export default async function WorksDetailPage({ params }: { params: { id: string } }): Promise<JSX.Element> {
   const { id } = params;
 
   // MicroCMSから記事詳細を取得
@@ -31,7 +31,7 @@ export default async function WorksDetailPage({ params }: { params: { id: string
           {/* アイキャッチ画像 */}
           {blog.eyecatch?.url && (
             <div className={styles.eyecatch}>
-              <img
+              <Image
                 src={blog.eyecatch.url}
                 alt={blog.title}
                 width={blog.eyecatch.width}
@@ -64,7 +64,11 @@ export default async function WorksDetailPage({ params }: { params: { id: string
           </div>
 
           {/* 本文 */}
-          <ReactMarkdown>{blog.content}</ReactMarkdown>
+          <article
+            className={styles.content}
+            dangerouslySetInnerHTML={{ __html: blog.content }}
+          />
+          {/* <ReactMarkdown>{blog.content}</ReactMarkdown> */}
         </main>
         <Footer className={`${styles.footer}`} />
       </div>
