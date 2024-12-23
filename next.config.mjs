@@ -1,4 +1,9 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+// eslint-disable-next-line @typescript-eslint/typedef
+const nextConfig = {
+  images: {
+    domains: ["images.microcms-assets.io"],
+  },
+};
 
 export default nextConfig;
