@@ -133,6 +133,7 @@
   object-fit: cover;
   border-radius: 15% 15% 0 0;
   border-bottom: #9cc7d0 1px solid;
+  overflow: hidden;
   :global(.dark) & {
     border: #5f5c5c 1px solid;
   }
