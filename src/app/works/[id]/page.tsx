@@ -6,6 +6,7 @@ import Header from '@/components/header/Header';
 import { MicroCMSContentId } from 'microcms-js-sdk';
 import { Blog } from '@/_type/blog';
 import Footer from '@/components/footer/Footer';
+import ReactMarkdown from 'react-markdown';
 
 // 「単一記事」を表す型
 type BlogSingle = MicroCMSContentId & Blog;
@@ -63,10 +64,7 @@ export default async function WorksDetailPage({ params }: { params: { id: string
           </div>
 
           {/* 本文 */}
-          <article
-            className={styles.content}
-            dangerouslySetInnerHTML={{ __html: blog.content }}
-          />
+          <ReactMarkdown>{blog.content}</ReactMarkdown>
         </main>
         <Footer className={`${styles.footer}`} />
       </div>

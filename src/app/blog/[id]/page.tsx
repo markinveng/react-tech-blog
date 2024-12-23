@@ -4,6 +4,7 @@ import { getBlogById } from '@/_libs/client';
 import styles from '@/app/blog/[id]/page.module.scss';
 import Header from '@/components/header/Header';
 import { MicroCMSContentId } from 'microcms-js-sdk';
+import Image from 'next/image';
 import { Blog } from '@/_type/blog';
 import Footer from '@/components/footer/Footer';
 
@@ -11,7 +12,9 @@ import Footer from '@/components/footer/Footer';
 type BlogSingle = MicroCMSContentId & Blog;
 
 // 動的ルーティングされたページコンポーネント
-export default async function BlogDetailPage({ params }: { params: { id: string } }) {
+import { ReactElement } from 'react';
+
+export default async function BlogDetailPage({ params }: { params: { id: string } }): Promise<ReactElement> {
   const { id } = params;
 
   // MicroCMSから記事詳細を取得
@@ -31,7 +34,7 @@ export default async function BlogDetailPage({ params }: { params: { id: string 
           {/* アイキャッチ画像 */}
           {blog.eyecatch?.url && (
             <div className={styles.eyecatch}>
-              <img
+              <Image
                 src={blog.eyecatch.url}
                 alt={blog.title}
                 width={blog.eyecatch.width}
