@@ -104,15 +104,31 @@
     line-height: 1.6;
   }
 
-  & ul {
-    font-size: 1.2em;
-    list-style: disc;
-    margin-top: 1.2em;
+  & ul,
+  & ol {
     padding-left: 50px;
+    margin-top: 1.2em;
   }
 
+  & ul {
+    list-style: disc;
+  }
   & ol {
     list-style: decimal;
+  }
+
+  & li {
+    font-size: 1.1em;
+    & li {
+      font-size: 1em;
+      & li {
+        font-size: 1;
+      }
+    }
+  }
+
+  & li ul, & li ul {
+    margin-top: 0;
   }
 
   & img {
@@ -124,5 +140,34 @@
     :global(.dark) & {
       border: 2px solid #fff;
     }
+  }
+
+  & blockquote {
+    margin-top: 1.5em;
+    font-style: italic;
+    font-size: 0.9em;
+    color: #6a6a6a;
+    padding-left: 20px;
+    & p {
+      border-left: 5px solid #6a6a6a;
+      padding-left: 5p10;
+    }
+    :global(.dark) & {
+      color: #fff;
+    }
+  }
+
+  & a {
+    font-weight: 700;
+    color: #736ed3;
+  }
+
+  a[target="_blank"]::after{
+    content: "→";
+    margin-left: 5px;
+  }
+
+  & a:hover {
+    text-decoration: underline;
   }
 }

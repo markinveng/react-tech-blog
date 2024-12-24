@@ -63,9 +63,9 @@ export default async function WorksDetailPage({ params }: { params: { id: string
             </div>
           </div>
 
-          <div className={styles.content}>
+          <article className={styles.content}>
             <EditorContents rawHtml={blog.content} />
-          </div>
+          </article>
         </main>
         <Footer className={`${styles.footer}`} />
       </div>

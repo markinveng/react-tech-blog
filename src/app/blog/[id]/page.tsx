@@ -13,6 +13,7 @@ type BlogSingle = MicroCMSContentId & Blog;
 
 // 動的ルーティングされたページコンポーネント
 import { ReactElement } from 'react';
+import EditorContents from '@/components/BlogContent/EditorContents/EditorContents';
 
 export default async function BlogDetailPage({ params }: { params: { id: string } }): Promise<ReactElement> {
   const { id } = params;
@@ -66,11 +67,9 @@ export default async function BlogDetailPage({ params }: { params: { id: string 
             </div>
           </div>
 
-          {/* 本文 */}
-          <article
-            className={styles.content}
-            dangerouslySetInnerHTML={{ __html: blog.content }}
-          />
+          <article className={styles.content}>
+            <EditorContents rawHtml={blog.content} />
+          </article>
         </main>
         <Footer className={`${styles.footer}`} />
       </div>
