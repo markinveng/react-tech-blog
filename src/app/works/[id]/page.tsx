@@ -1,5 +1,4 @@
 import { notFound } from 'next/navigation';
-// MicroCMSやデータ取得用の関数をインポート
 import { getBlogById } from '@/_libs/client';
 import styles from '@/app/works/[id]/page.module.scss';
 import Header from '@/components/header/Header';
@@ -7,6 +6,7 @@ import { MicroCMSContentId } from 'microcms-js-sdk';
 import Image from 'next/image';
 import { Blog } from '@/_type/blog';
 import Footer from '@/components/footer/Footer';
+import EditorContents from '@/components/BlogContent/EditorContents/EditorContents';
 
 // 「単一記事」を表す型
 type BlogSingle = MicroCMSContentId & Blog;
@@ -63,12 +63,9 @@ export default async function WorksDetailPage({ params }: { params: { id: string
             </div>
           </div>
 
-          {/* 本文 */}
-          <article
-            className={styles.content}
-            dangerouslySetInnerHTML={{ __html: blog.content }}
-          />
-          {/* <ReactMarkdown>{blog.content}</ReactMarkdown> */}
+          <div className={styles.content}>
+            <EditorContents rawHtml={blog.content} />
+          </div>
         </main>
         <Footer className={`${styles.footer}`} />
       </div>

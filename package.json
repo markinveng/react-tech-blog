@@ -4,13 +4,17 @@
   "private": true,
   "scripts": {
     "dev": "NODE_ENV=development next dev",
-    "build": "NODE_ENV=production next build ",
+    "build": "rm -rf .next/cache/fetch-cache && NODE_ENV=production next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/highlight.js": "^9.12.4",
     "@typescript-eslint/eslint-plugin": "^8.18.1",
+    "dompurify": "^3.2.3",
     "eslint-config-prettier": "^9.1.0",
+    "highlight.js": "^11.11.0",
+    "html-react-parser": "^5.2.1",
     "microcms-js-sdk": "^3.1.2",
     "next": "^14.2.20",
     "react": "^18",

@@ -50,7 +50,7 @@ export async function getBlogById(id: string): Promise<BlogSingle> {
   try {
     const response = await client.get<BlogSingle>({
       endpoint: "blogs",
-      contentId: id
+      contentId: id,
     });
     return response;
   } catch (error) {

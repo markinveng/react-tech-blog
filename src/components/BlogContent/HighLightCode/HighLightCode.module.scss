@@ -1,0 +1,31 @@
+.codeBlock {
+  max-width: 544px;
+  margin: 1.5em auto 0;
+}
+
+.dataFileName {
+  font-size: 0.8em;
+  color: #666;
+  background-color: #f0f0f0;
+  margin-bottom: -1px;
+  min-width: 100px;
+  width: fit-content;
+  text-align: center;
+  border-radius: 5px 5px 0 0;
+  padding: 3px 6px;
+  :global(.dark) & {
+    background-color: #1a2638;
+    color: #ccc;
+  }
+}
+
+.code {
+  font-size: 0.9em;
+  border-radius: 0 5px 5px;
+  background-color: #f0f0f0;
+  padding: 1.1rem;
+  :global(.dark) & {
+    background-color: #1a2638;
+    color: #fff;
+  }
+}
