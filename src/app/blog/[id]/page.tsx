@@ -20,7 +20,6 @@ export default async function BlogDetailPage({ params }: { params: { id: string 
 
   // MicroCMSから記事詳細を取得
   const blog: BlogSingle = await getBlogById(id).catch(() => notFound());
-  console.log(blog);
   
   // 該当記事がなければ 404
   if (!blog) {
