@@ -1,0 +1,156 @@
+.flexWrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.main {
+  max-width: 500px;
+  margin: 0 auto;
+  animation: fadeInUp 0.5s ease-in-out forwards;
+  width: 50%;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.title {
+  font-weight: 700;
+  font-size: 30px;
+  margin-top: 50px;
+  text-align: center;
+}
+
+.nameWrapper,
+.emailWrapper,
+.messageWrapper,
+.subjectWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.subjectWrapper {
+  position: relative;
+}
+
+.label {
+  font-size: 20px;
+  margin-top: 20px;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+.subjectSelect {
+  background: #ffffff;
+  appearance: none;
+  color: #000;
+  border-radius: 5px;
+  padding: 10px;
+  border: 1px solid #9aa4ec !important;
+  outline: none;
+  cursor: pointer;
+  :global(.dark) & {
+    background: #000;
+    color: #fff;
+    border: 1px solid #fff !important;
+  }
+}
+
+.subjectWrapper::after {
+  position: absolute;
+  right: 15px;
+  width: 10px;
+  height: 7px;
+  background-color: #9aa4ec;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  top: 74%;
+  content: "";
+  pointer-events: none;
+  :global(.dark) & {
+    background-color: #fff;
+  }
+}
+
+.nameInput {
+  border-radius: 5px !important;
+  background: #fff;
+  padding: 10px;
+  border: 1px solid #ddd;
+  outline: none;
+  &:focus-visible {
+    border: 2px solid #9aa4ec !important;
+  }
+  :global(.dark) & {
+    background: #000;
+    color: #fff;
+  }
+}
+
+.emailInput {
+  border-radius: 5px !important;
+  background: #fff;
+  padding: 10px;
+  border: 1px solid #ddd;
+  outline: none;
+  &:focus-visible {
+    border: 2px solid #9aa4ec !important;
+  }
+  :global(.dark) & {
+    background: #000;
+    color: #fff;
+  }
+}
+
+.messageInput {
+  border-radius: 5px !important;
+  background: #fff;
+  padding: 10px;
+  border: 1px solid #ddd;
+  outline: none;
+  &:focus-visible {
+    border: 2px solid #9aa4ec !important;
+  }
+  :global(.dark) & {
+    background: #000;
+    color: #fff;
+  }
+}
+
+.submitButton {
+  background: transparent;
+  color: #9aa4ec;
+  border: 1px solid #9aa4ec;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  margin: 20px auto;
+  outline: none;
+  display: block;
+  font-weight: 600;
+  transition: .2s;
+  :global(.dark) & {
+    color: #fff;
+    border: 1px solid #fff;
+  }
+}
+
+.submitButton:hover {
+  background: #9aa4ec;
+  color: #fff;
+  :global(.dark) & {
+    background: #fff;
+    color: #000;
+  }
+}
+
+.footer {
+  margin-top: auto !important;
+}
