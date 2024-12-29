@@ -19,6 +19,10 @@ git clone git@github.com:markinveng/react-tech-blog.git
 SERVICE_DOMAIN=[サービスドメイン]
 # APIキー(APIプレビュー→「X-MICROCMS-API-KEY:」後の文字列)
 API_KEY=[APIキー]
+# メールアドレス(Contactページ)
+GMAIL_ADDRESS=[メールアドレス]
+GMAIL_PASSWORD=[Gmailパスワード(16桁)]
+CONTACT_RECEIVE_ADDRESS=[受信用メールアドレス]
 ```
 
 - localhostを建てる
