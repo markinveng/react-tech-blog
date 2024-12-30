@@ -6,13 +6,14 @@ import { MicroCMSContentId } from 'microcms-js-sdk';
 import Image from 'next/image';
 import { Blog } from '@/_type/blog';
 import Footer from '@/components/footer/Footer';
-import EditorContents from '@/components/BlogContent/EditorContents/EditorContents';
 
 // 「単一記事」を表す型
 type BlogSingle = MicroCMSContentId & Blog;
 
 // 動的ルーティングされたページコンポーネント
-export default async function WorksDetailPage({ params }: { params: { id: string } }): Promise<JSX.Element> {
+import { ReactElement } from 'react';
+import EditorContents from '@/components/BlogContent/EditorContents/EditorContents';
+export default async function WorksDetailPage({ params }: { params: { id: string } }): Promise<ReactElement> {
   const { id } = params;
 
   // MicroCMSから記事詳細を取得
