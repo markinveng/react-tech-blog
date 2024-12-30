@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/typedef */
 import { Blog, Category } from '@/_type/blog';
 import { createClient, MicroCMSContentId, MicroCMSListResponse } from 'microcms-js-sdk';
 import { notFound } from 'next/navigation';
@@ -10,7 +9,7 @@ export const client = createClient({
 });
 
 // 記事一覧を取得
-export const getBlogsByCategory = async (
+export const getBlogsByCategory: (categoryId: string, limit: number) => Promise<MicroCMSListResponse<Blog>> = async (
   categoryId: string,
   limit: number
 ): Promise<MicroCMSListResponse<Blog>> => {
@@ -29,7 +28,7 @@ export const getBlogsByCategory = async (
   }
 };
 
-export const getCategories = async (categoryId: string): Promise<MicroCMSListResponse<Category>> => {
+export const getCategories: (categoryId: string) => Promise<MicroCMSListResponse<Category>> = async (categoryId: string): Promise<MicroCMSListResponse<Category>> => {
   try {
     const response: MicroCMSListResponse<Category> = await client.getList({
       endpoint: "categories",
@@ -48,7 +47,7 @@ type BlogSingle = MicroCMSContentId & Blog;
 
 export async function getBlogById(id: string): Promise<BlogSingle> {
   try {
-    const response = await client.get<BlogSingle>({
+    const response: BlogSingle = await client.get<BlogSingle>({
       endpoint: "blogs",
       contentId: id,
     });
