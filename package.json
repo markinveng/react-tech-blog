@@ -3,18 +3,21 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "NODE_ENV=development next dev",
+    "dev": "NODE_ENV=development next dev -H 0.0.0.0 -p 3000",
     "build": "rm -rf .next/cache/fetch-cache && NODE_ENV=production next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "@react-three/drei": "^9.122.0",
+    "@react-three/fiber": "^8.18.0",
     "@types/highlight.js": "^9.12.4",
     "@typescript-eslint/eslint-plugin": "^8.18.1",
     "dompurify": "^3.2.3",
     "eslint-config-prettier": "^9.1.0",
     "highlight.js": "^11.11.0",
     "html-react-parser": "^5.2.1",
+    "lil-gui": "^0.20.0",
     "microcms-js-sdk": "^3.1.2",
     "next": "^14.2.20",
     "nodemailer": "^6.9.16",
@@ -22,7 +25,8 @@
     "react-dom": "^18",
     "react-icons": "^5.2.1",
     "sass": "^1.82.0",
-    "swiper": "^11.1.15"
+    "swiper": "^11.1.15",
+    "three": "^0.176.0"
   },
   "devDependencies": {
     "@types/node": "20.17.10",
