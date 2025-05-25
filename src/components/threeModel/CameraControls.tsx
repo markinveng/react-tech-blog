@@ -5,63 +5,67 @@ import GUI from 'lil-gui';
 
 const showGUI: boolean = true;
 
-// easeInOut: Hermite interpolation
 const easeInOut: (t: number) => number = (t: number): number => t * t * (3 - 2 * t);
 
 export default function CameraControls(): null {
   const { camera } = useThree();
 
-  const guiRef: React.MutableRefObject<GUI | null> = useRef<GUI | null>(null);
   const targetPos: React.MutableRefObject<Vector3> = useRef<Vector3>(new Vector3(16.8, 20.1, 13.1));
-  const targetLook: React.MutableRefObject<Vector3> = useRef<Vector3>(new Vector3(9.4, 18, 0));
-  const fov: React.MutableRefObject<number> = useRef<number>(55);
+  const lookAt: React.MutableRefObject<{ x: number; y: number; z: number }> = useRef<{ x: number; y: number; z: number }>({ x: 9.4, y: 18, z: 0 }); // 修正: オブジェクトで追跡可能に
+  const cameraState: React.MutableRefObject<{ fov: number }> = useRef<{ fov: number }>({ fov: 55 });        // 修正: fovもオブジェクトで管理
 
   const [animProgress, setAnimProgress] = useState(0);
+
+  // 初期化：画面幅によって lookAt と fov を設定
+  useEffect(() => {
+    const width: number = typeof window !== 'undefined' ? window.innerWidth : 1024;
+
+    if (width <= 768) {
+      lookAt.current = { x: 7.2, y: 18, z: 0 };
+      cameraState.current.fov = 80;
+    } else if (width <= 1024) {
+      lookAt.current = { x: 6.2, y: 18, z: 0 };
+      cameraState.current.fov = 60;
+    } else {
+      lookAt.current = { x: 9.4, y: 18, z: 0 };
+      cameraState.current.fov = 55;
+    }
+  }, []);
 
   useEffect(() => {
     if (!showGUI) return;
 
     const gui: GUI = new GUI();
-    guiRef.current = gui;
+    gui.add(targetPos.current, 'x', -50, 50, 0.1).name('Camera X');
+    gui.add(targetPos.current, 'y', -50, 50, 0.1).name('Camera Y');
+    gui.add(targetPos.current, 'z', -50, 50, 0.1).name('Camera Z');
 
-    const pos: GUI = gui.addFolder('Camera Position');
-    pos.add(targetPos.current, 'x', -50, 50, 0.1).name('X');
-    pos.add(targetPos.current, 'y', -50, 50, 0.1).name('Y');
-    pos.add(targetPos.current, 'z', -50, 50, 0.1).name('Z');
+    const look: GUI = gui.addFolder('Look At');
+    look.add(lookAt.current, 'x', -50, 50, 0.1).name('LookAt X');
+    look.add(lookAt.current, 'y', -50, 50, 0.1).name('LookAt Y');
+    look.add(lookAt.current, 'z', -50, 50, 0.1).name('LookAt Z');
 
-    const look: GUI = gui.addFolder('Camera LookAt');
-    look.add(targetLook.current, 'x', -50, 50, 0.1).name('X');
-    look.add(targetLook.current, 'y', -50, 50, 0.1).name('Y');
-    look.add(targetLook.current, 'z', -50, 50, 0.1).name('Z');
+    gui.add(cameraState.current, 'fov', 10, 100).name('FOV');
 
-    gui.add(fov, 'current', 10, 100).name('FOV').onChange((v: number) => {
-      const cam: PerspectiveCamera = camera as PerspectiveCamera;
-      cam.fov = v;
-      cam.updateProjectionMatrix();
-    });
-
-    return (): void => gui.destroy();
-  }, [camera]);
+    return () => gui.destroy();
+  }, []);
 
   useFrame((_: unknown, delta: number) => {
     const cam: PerspectiveCamera = camera as PerspectiveCamera;
+    const speed: number = 2;
 
-    const speed: number = 2.0;
     if (animProgress < 1) {
       const t: number = Math.min(animProgress + delta / speed, 1);
-      const easedT: number = easeInOut(t);
       setAnimProgress(t);
 
       const start: Vector3 = new Vector3(0, 0, 50);
-      const currentPos: Vector3 = start.clone().lerp(targetPos.current, easedT);
-      cam.position.copy(currentPos);
-      cam.lookAt(targetLook.current);
+      cam.position.copy(start.lerp(targetPos.current, easeInOut(t)));
     } else {
       cam.position.copy(targetPos.current);
-      cam.lookAt(targetLook.current);
     }
 
-    cam.fov = fov.current;
+    cam.lookAt(new Vector3(lookAt.current.x, lookAt.current.y, lookAt.current.z));
+    cam.fov = cameraState.current.fov;
     cam.updateProjectionMatrix();
   });
 

@@ -4,7 +4,7 @@ import { Suspense, useEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { useGLTF, Bounds, useTexture } from '@react-three/drei';
 import CameraControls from './CameraControls';
-import { DoubleSide, Mesh, MeshStandardMaterial, Texture, RepeatWrapping } from 'three';
+import { DoubleSide, Mesh, MeshStandardMaterial, MeshPhysicalMaterial, Texture, RepeatWrapping } from 'three';
 
 type Props = {
   imageUrls: string[]; // MicroCMSから取得した画像URL
@@ -19,7 +19,7 @@ function Model({ imageUrls }: Props): React.ReactElement {
       if (!(child instanceof Mesh)) return;
 
       // FR_mat_innner: ザラザラしたクリーム色
-      if (child.name === 'FR_mat_innner') {
+      if (child.name === 'FR_mat_inner') {
         child.material = new MeshStandardMaterial({
           color: '#f0e9d8',
           roughness: 1,
@@ -38,15 +38,15 @@ function Model({ imageUrls }: Props): React.ReactElement {
 
       // F_Vase: ガラスっぽい花瓶
       if (child.name === 'F_Vase') {
-        child.material = new MeshStandardMaterial({
+        child.material = new MeshPhysicalMaterial({
           color: '#ffffff',
-          roughness: 0.1,
-          metalness: 0.9,
+          transmission: 0.2,
+          thickness: 1,
+          roughness: 0,
+          metalness: 0,
           transparent: true,
-          opacity: 0.9,
-          side: DoubleSide,
-          map: null,
-          vertexColors: false
+          opacity: 0.99,
+          side: DoubleSide
         });
       }
 
