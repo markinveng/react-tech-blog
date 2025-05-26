@@ -35,8 +35,6 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     // メール送信
     await transporter.sendMail(mailOptions);
 
-    console.log("aaa");
-
     // 成功レスポンス
     return NextResponse.json({ success: true });
   } catch (error) {

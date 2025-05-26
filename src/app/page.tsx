@@ -4,7 +4,7 @@ import styles from "@/app/home.module.scss"
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import WorksModel from '@/components/threeModel/WorksModel';
+import WorksModel from '@/components/threeModel/Works/WorksModel';
 
 import React from "react";
 
