@@ -28,13 +28,15 @@ export default function SnowParticles({ count = 500 }): JSX.Element {
   const { positions, scales } = useMemo(() => {
     const positions: Float32Array = new Float32Array(count * 3);
     const scales: Float32Array = new Float32Array(count);
+    const seeds = new Float32Array(count);
     for (let i: number = 0; i < count; i++) {
       positions[i * 3 + 0] = (Math.random() - 0.5) * 50;
       positions[i * 3 + 1] = Math.random() * 30;
       positions[i * 3 + 2] = (Math.random() - 0.5) * 50;
       scales[i] = Math.random() * 0.5 + 3;
+      seeds[i] = Math.random();
     }
-    return { positions, scales };
+    return { positions, scales, seeds };
   }, [count]);
 
   useFrame(({ clock }: { clock: THREE.Clock }) => {
