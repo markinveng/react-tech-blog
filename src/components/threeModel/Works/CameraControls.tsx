@@ -11,8 +11,8 @@ export default function CameraControls(): null {
   const { camera } = useThree();
 
   const targetPos: React.MutableRefObject<Vector3> = useRef<Vector3>(new Vector3(16.8, 20.1, 13.1));
-  const lookAt: React.MutableRefObject<{ x: number; y: number; z: number }> = useRef<{ x: number; y: number; z: number }>({ x: 9.4, y: 18, z: 0 }); // 修正: オブジェクトで追跡可能に
-  const cameraState: React.MutableRefObject<{ fov: number }> = useRef<{ fov: number }>({ fov: 55 });        // 修正: fovもオブジェクトで管理
+  const lookAt: React.MutableRefObject<{ x: number; y: number; z: number }> = useRef<{ x: number; y: number; z: number }>({ x: 9.4, y: 18, z: 0 });
+  const cameraState: React.MutableRefObject<{ fov: number }> = useRef<{ fov: number }>({ fov: 55 });
 
   const [animProgress, setAnimProgress] = useState(0);
 
@@ -21,13 +21,16 @@ export default function CameraControls(): null {
     const width: number = typeof window !== 'undefined' ? window.innerWidth : 1024;
 
     if (width <= 768) {
-      lookAt.current = { x: 7.2, y: 18, z: 0 };
+      targetPos.current.set(16.8, 30, 14.4);
+      lookAt.current = { x: 8.8, y: 25.1, z: 3.3 };
       cameraState.current.fov = 80;
     } else if (width <= 1024) {
+      targetPos.current.set(15.0, 19.5, 12.5);
       lookAt.current = { x: 6.2, y: 18, z: 0 };
-      cameraState.current.fov = 60;
+      cameraState.current.fov = 70;
     } else {
-      lookAt.current = { x: 9.4, y: 18, z: 0 };
+      targetPos.current.set(16.8, 30, 14.4);
+      lookAt.current = { x: 9.4, y: 25.1, z: 3.3 };
       cameraState.current.fov = 55;
     }
   }, []);

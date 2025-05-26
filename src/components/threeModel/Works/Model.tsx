@@ -12,7 +12,9 @@ export default function Model({ imageUrls }: Props): React.ReactElement {
   const textures: Texture[] = useTexture(imageUrls);
 
   useEffect(() => {
+    console.log('Model scene:', scene);
     scene.traverse((child: THREE.Object3D) => {
+      console.log('Traversing child:', child.name);
       if (!(child instanceof Mesh)) return;
 
       // FR_mat_innner: ザラザラしたクリーム色
@@ -21,6 +23,16 @@ export default function Model({ imageUrls }: Props): React.ReactElement {
           color: '#f0e9d8',
           roughness: 1,
           metalness: 0.1,
+        });
+      }
+
+      if (child.name === 'F_Butter_fly') {
+        child.material = new THREE.MeshStandardMaterial({
+          color: '#baeff9', // 薄い青白色（AliceBlue）
+          roughness: 1,
+          metalness: 0.1,
+          emissive: new THREE.Color('#36cafc'), // 青白の発光色
+          emissiveIntensity: 2.0, // 放射強度（1.0〜3.0くらいで調整）
         });
       }
 

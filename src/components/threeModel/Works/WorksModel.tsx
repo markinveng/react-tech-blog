@@ -5,7 +5,8 @@ import { Canvas } from '@react-three/fiber';
 import { Bounds } from '@react-three/drei';
 import CameraControls from './CameraControls';
 import Model from './Model';
-import ButterflyAnimation from './ButterFlyAnimation';
+import ButterflyAnimation from './ButterflyAnimation';
+import SnowParticles from './SnowParticles';
 
 
 
@@ -26,6 +27,7 @@ export default function WorksModel(): React.ReactElement {
             <Model imageUrls={imageUrls} />
             <ButterflyAnimation />
             <CameraControls />
+            <SnowParticles />
           </Bounds>
         </Suspense>
       </Canvas>
