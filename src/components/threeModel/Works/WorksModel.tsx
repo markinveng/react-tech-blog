@@ -13,7 +13,7 @@ export default function WorksModel(): React.ReactElement | null {
   const [imageItems, setImageItems] = useState<ImageItem[] | null>(null);
 
   useEffect(() => {
-    getImageItems(3).then(setImageItems); // Planeが3枚の場合
+    getImageItems(5).then(setImageItems); // Planeが3枚の場合
   }, []);
 
   if (!imageItems) return null; // 読み込み中は何も表示しない（必要に応じてSpinnerなど）

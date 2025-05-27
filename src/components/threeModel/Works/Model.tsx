@@ -61,7 +61,7 @@ export default function Model({ imageItems }: Props): React.ReactElement {
       }
 
       // Plane, Plane001, Plane002: 写真＋テクスチャ
-      const planeNames: string[] = ['Plane', 'Plane001', 'Plane002'];
+      const planeNames: string[] = ['Plane', 'Plane001', 'Plane002', 'Plane003', 'Plane004',];
       const planeIndex: number = planeNames.indexOf(child.name);
       if (planeIndex !== -1 && textures[planeIndex]) {
         const texture: Texture = textures[planeIndex] as Texture;
