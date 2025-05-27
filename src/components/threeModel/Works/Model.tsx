@@ -2,19 +2,20 @@ import { useGLTF, useTexture } from "@react-three/drei";
 import { useEffect } from "react";
 import { DoubleSide, Mesh, MeshPhysicalMaterial, MeshStandardMaterial, RepeatWrapping, Texture } from "three";
 import * as THREE from 'three';
+import { ImageItem } from '@/_libs/client';
 
 type Props = {
-  imageUrls: string[]; // MicroCMSから取得した画像URL
+  imageItems: ImageItem[];
 };
 
-export default function Model({ imageUrls }: Props): React.ReactElement {
+export default function Model({ imageItems }: Props): React.ReactElement {
   const { scene } = useGLTF('/models/butterfly-picture.glb');
-  const textures: Texture[] = useTexture(imageUrls);
+  const textures: Texture[] = useTexture(imageItems.map(item => item.img.url));
 
   useEffect(() => {
-    console.log('Model scene:', scene);
+    //console.log('Model scene:', scene);
     scene.traverse((child: THREE.Object3D) => {
-      console.log('Traversing child:', child.name);
+      //console.log('Traversing child:', child.name);
       if (!(child instanceof Mesh)) return;
 
       // FR_mat_innner: ザラザラしたクリーム色
@@ -65,12 +66,13 @@ export default function Model({ imageUrls }: Props): React.ReactElement {
       if (planeIndex !== -1 && textures[planeIndex]) {
         const texture: Texture = textures[planeIndex] as Texture;
         texture.wrapS = texture.wrapT = RepeatWrapping;
-
+        texture.flipY = false;
         child.material = new MeshStandardMaterial({
           map: texture,
           color: '#ffffff',
-          roughness: 0.2,
+          //roughness: 0.2,
           metalness: 0.1,
+          side: DoubleSide,
         });
       }
     });
