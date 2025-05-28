@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { notojp, } from "@/util/font/font";
 import '@/style/globals.scss';
 import Header from "@/components/header/Header";
+import Head from "@/components/Head/Head";
+import CustomHead from "./Head";
 //import { DarkModeProvider } from "@/_libs/darkmode";
 //import Pointer from "@/components/pointer/Pointer";
 

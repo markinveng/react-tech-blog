@@ -40,16 +40,27 @@
 .nextIcon {
   line-height: 1.2rem;
   margin-top: 3px;
+  font-weight: bold;
 }
 
 .firstIcon,
 .lastIcon {
   font-size: 1.1rem;
   line-height: 0.8rem;
+  font-weight: bold;
 }
 
 .prevNum,
 .nextNum {
+  font-family: "tablet-gothic", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.currentNum {
+  font-family: "tablet-gothic", sans-serif;
+  font-weight: 700;
+  font-style: normal;
 }
 
 .currentNum {

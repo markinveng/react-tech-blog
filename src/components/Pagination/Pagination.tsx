@@ -27,7 +27,7 @@ export function Pagination({ currentPage, totalPages, onPageChange }: Pagination
         {prevPage >= 1 ? <span className={styles.prevNum}>{prevPage}</span> : <span className={styles.margin} style={{ width: '1.5em' }} ></span>}
 
         {/* 現在ページ（強調表示） */}
-        <span className={styles.currentNum} style={{ fontWeight: 'bold' }}>{currentPage}</span>
+        <span className={styles.currentNum}>{currentPage}</span>
 
         {/* 右側ページ番号（1つ後）*/}
         {nextPage <= totalPages ? <span className={styles.nextNum}>{nextPage}</span> : <span style={{ width: '1.5em' }} />}

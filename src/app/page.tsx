@@ -1,17 +1,15 @@
 "use client"
-import Header from '@/components/header/Header'
 import styles from "@/app/home.module.scss"
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
 import WorksModel from '@/components/threeModel/Works/WorksModel';
 
 import React from "react";
+import Head from "./Head";
 
 export default function Home(): React.ReactElement {
 
   return (
     <>
+      <Head />
       <div className={`homePage`}>
         <main className={`${styles.mainWrapper}`}>
         </main>
