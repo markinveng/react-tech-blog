@@ -30,13 +30,11 @@ export default function WorksModel(): React.ReactElement | null {
   return (
     <div style={{ width: '100vw', height: '100vh', position: 'relative' }}>
       {/* ページネーションUIを前面に */}
-      <div style={{ position: 'absolute', zIndex: 10, top: 20, left: 20 }}>
-        <Pagination
+      <Pagination
           currentPage={currentPage}
           totalPages={totalPages}
           onPageChange={(page: number) => setCurrentPage(page)}
         />
-      </div>
 
       {/* Three.js Canvas */}
       <Canvas>
