@@ -9,7 +9,7 @@ import Model from './Model';
 import CameraControls from './CameraControls';
 import ButterflyAnimation from './ButterflyAnimation';
 import SnowParticles from './SnowParticles';
-import { Pagination } from '@/components/Pagenation/Pagenation';
+import { Pagination } from '@/components/Pagination/Pagination';
 
 
 export default function WorksModel(): React.ReactElement | null {

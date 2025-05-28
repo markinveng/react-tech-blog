@@ -1,0 +1,56 @@
+.paginationContainer {
+  border: #fff solid 1px;
+  display: flex;
+  justify-content: center;
+  min-width: 250px;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.pagination {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+}
+
+.firstIcon, .prevIcon, .nextIcon, .lastIcon {
+  cursor: pointer;
+  color: #fff;
+  transition: color 0.3s ease;
+  background: transparent;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  &:hover {
+    background: #fff;
+    color: #000;
+  }
+}
+
+.prevIcon, .nextIcon {
+  line-height: 1.2rem;
+  margin-top: 3px;
+}
+
+.firstIcon, .lastIcon {
+  font-size: 1.1rem;
+  line-height: 0.8rem;
+}
+
+.prevNum, .nextNum {
+
+}
+
+.currentNum {
+  font-size: 1.5rem;
+}
+
+.marginIcon {
+  display: block;
+  width: 35px;
+}
+
+.margin {
+  width: 35px;
+}
