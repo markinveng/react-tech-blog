@@ -50,7 +50,7 @@ export default function WorksModel(): React.ReactElement | null {
       <Canvas>
         <ambientLight intensity={0.6} />
         <directionalLight position={[10, 10, 10]} intensity={1} />
-        <axesHelper args={[2]} />
+        {/* <axesHelper args={[2]} /> */}
         <Suspense fallback={null}>
           <Bounds observe={false} margin={1.2}>
             <Model
