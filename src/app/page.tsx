@@ -1,5 +1,4 @@
 "use client"
-import styles from "@/app/home.module.scss"
 import WorksModel from '@/components/threeModel/Works/WorksModel';
 
 import React from "react";
