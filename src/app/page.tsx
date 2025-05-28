@@ -11,9 +11,9 @@ export default function Home(): React.ReactElement {
     <>
       <Head />
       <div className={`homePage`}>
-        <main className={`${styles.mainWrapper}`}>
+        <main>
+          <WorksModel />
         </main>
-        <WorksModel />
       </div>
     </>
   );
