@@ -1,5 +1,22 @@
+/* eslint-disable @typescript-eslint/typedef */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { createClient, MicroCMSContentId, MicroCMSListResponse } from 'microcms-js-sdk';
 import { notFound } from 'next/navigation';
+
+export type ImageItem = {
+  id: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  revisedAt: string;
+  img: {
+    url: string;
+    height: number;
+    width: number;
+  };
+  url: string;
+  description: string;
+};
 
 // eslint-disable-next-line @typescript-eslint/typedef
 export const client = createClient({
@@ -7,37 +24,35 @@ export const client = createClient({
   apiKey: process.env.NEXT_PUBLIC_API_KEY || '',
 });
 
-// 画像アイテムの型（description や url も含む）
-export type ImageItem = {
-  id: string;
-  img: {
-    url: string;
-    width: number;
-    height: number;
+export const getImagesByPage = async (
+  currentPage: number,
+  limit: number = 5
+): Promise<{ contents: ImageData[]; totalCount: number }> => {
+  // 全件数取得（1件だけ取得してtotalCountを得る）
+  const { totalCount } = await client.getList({
+    endpoint: "works",
+    queries: { limit: 1 },
+  });
+
+  // 取得開始位置（新しい順にページネーションしたいので逆に計算）
+  const startIndex = totalCount - currentPage * limit;
+  const offset = Math.max(startIndex, 0);
+  const actualLimit = startIndex < 0 ? limit + startIndex : limit;
+
+  // データ取得（createdAtの昇順 → reverseで新しい順に）
+  const { contents } = await client.getList<ImageData>({
+    endpoint: "works",
+    queries: {
+      offset,
+      limit: actualLimit,
+      orders: "createdAt", // 昇順で取得
+    },
+  });
+
+  return {
+    contents: contents.reverse(), // 表示は降順（新しい順）
+    totalCount,
   };
-  url?: string; // 詳細ページへの外部リンク
-  description?: string; // 説明文
-};
-
-// MicroCMSから画像情報の配列を取得
-// eslint-disable-next-line @typescript-eslint/typedef
-export const getImageItems = async (
-  // eslint-disable-next-line @typescript-eslint/typedef
-  limit = 5
-): Promise<ImageItem[]> => {
-  try {
-    const res: MicroCMSListResponse<ImageItem> = await client.getList({
-      endpoint: 'works', // ← ここをMicroCMSの実際のエンドポイント名に変更
-      queries: {
-        limit,
-      },
-    });
-
-    return res.contents;
-  } catch (error) {
-    console.error('getImageItems でエラーが発生しました:', error);
-    notFound(); // Next.js で自動的に 404 画面を出す
-  }
 };
 
 // 記事一覧を取得
