@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, Suspense, useCallback } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Bounds } from '@react-three/drei';
 import { getImagesByPage } from '@/_libs/client';

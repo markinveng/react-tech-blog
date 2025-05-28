@@ -1,5 +1,5 @@
 import { useGLTF, useTexture } from "@react-three/drei";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import {
   DoubleSide,
   Mesh,
@@ -23,22 +23,11 @@ export default function Model({ imageItems, onPlaneClick }: Props): React.ReactE
   const { camera, gl } = useThree();
   const raycaster = useRef(new THREE.Raycaster());
   const pointer = useRef(new THREE.Vector2());
-  const [modalData, setModalData] = useState<ImageData | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   // テクスチャを imageItems の img.url から読み込み
   const textures: Texture[] = useTexture(
     (imageItems as ImageItem[]).map((item: ImageItem) => item.img.url)
   );
-
-  const handlePlaneClick = useCallback((intersectedMeshName: string) => {
-    const index = parseInt(intersectedMeshName.replace('Plane', '').replace('00', ''), 10) || 0;
-    const clickedData = Array.isArray(imageItems) ? imageItems[index] : undefined;
-    if (clickedData) {
-      setModalData(clickedData);
-      setIsModalOpen(true);
-    }
-  }, [imageItems]);
 
   useEffect(() => {
     const planeNames: string[] = ["Plane", "Plane001", "Plane002", "Plane003", "Plane004"];
