@@ -1,23 +1,42 @@
+@use "../../style/breakpoints" as *;
+
 .container {
-  position: sticky;
+  position: fixed;
   top: -1px;
   backdrop-filter: blur(16px);
   z-index: 10;
+  width: 100%;
 }
 
 .wrapper {
   display: flex;
-  justify-content: space-between;
   align-items: flex-end;
   max-width: 56rem;
   margin: 0 auto;
+  margin-left: 100px;
   padding-top: 20px;
   padding-bottom: 20px;
+  padding-left: 50px;
+  @include tab {
+    padding-left: 20px;
+    margin-left: 8%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  @include sp {
+    margin-left: 0;
+    padding-left: 15px;
+  }
 }
 
 .appHeader {
   font-size: 1.875rem;
   line-height: 2.25rem;
+
+  @include sp {
+    font-size: 1.5rem;
+  }
 }
 
 .appTitle {
@@ -33,6 +52,36 @@
   font-size: 1.125rem;
   line-height: 1.75rem;
   font-weight: 800;
+  margin-left: 50px;
+  @include tab {
+    margin-left: 20px;
+    gap: 5px;
+  }
+
+  @include sp {
+    margin-left: 0;
+    padding-left: 10px;
+  }
+}
+
+.navigationLink {
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 5px;
+  transition: background 0.5s ease, color 0.5s ease; // ← ★ ここを追加
+  &:hover {
+    background: #fff;
+    color: #000;
+  }
+
+  @include tab {
+    font-size: 1.2rem;
+  }
+
+  @include sp {
+    font-size: 0.9rem;
+    padding: 5px;
+  }
 }
 
 .darkModeToggleButton {

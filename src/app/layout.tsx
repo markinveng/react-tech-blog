@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { notojp, } from "@/util/font/font";
 import '@/style/globals.scss';
-import { DarkModeProvider } from "@/_libs/darkmode";
+import Header from "@/components/header/Header";
+//import { DarkModeProvider } from "@/_libs/darkmode";
 //import Pointer from "@/components/pointer/Pointer";
 
 
@@ -18,12 +19,13 @@ export default function RootLayout({
 }>): JSX.Element {
   return (
     <html lang="ja">
-      <DarkModeProvider>
-        <body className={``} >
-          {/* <Pointer /> */}
-          {children}
-        </body>
-      </DarkModeProvider>
+      {/* <DarkModeProvider> */}
+      <body className="dark" >
+        {/* <Pointer /> */}
+        <Header />
+        {children}
+      </body>
+      {/* </DarkModeProvider> */}
     </html>
   );
 }

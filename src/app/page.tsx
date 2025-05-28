@@ -13,7 +13,6 @@ export default function Home(): React.ReactElement {
   return (
     <>
       <div className={`homePage`}>
-        {/* <Header /> */}
         <main className={`${styles.mainWrapper}`}>
         </main>
         <WorksModel />

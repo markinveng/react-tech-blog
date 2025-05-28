@@ -1,12 +1,12 @@
 "use client"
 import { playRightRO } from "@/util/font/font";
-import { CiLight, CiDark } from "react-icons/ci";
-import { useDarkMode } from "@/_libs/darkmode"
+//import { CiLight, CiDark } from "react-icons/ci";
+//import { useDarkMode } from "@/_libs/darkmode"
 import Link from "next/link";
 import styles from '@/components/header/Header.module.scss';
 
 export default function Header(): JSX.Element {
-  const { isDarkMode, toggle } = useDarkMode()
+  //const { isDarkMode, toggle } = useDarkMode()
   return (
     <header className={`${styles.container}`}>
       <div className={`${styles.wrapper}`}>
@@ -15,19 +15,19 @@ export default function Header(): JSX.Element {
         </Link>
         <nav>
           <ul className={styles.navigationList}>
-            <li><Link href={"/"} scroll={false}>Home</Link></li>
-            <li><Link href={"/works"} scroll={false}>Works</Link></li>
-            <li><Link href={"/blog"} scroll={false}>Blog</Link></li>
-            <li><Link href={"/contact"} scroll={false}>Contact</Link></li>
+            <li><Link className={styles.navigationLink} href={"/"} scroll={false}>Works</Link></li>
+            <li><Link className={styles.navigationLink} href={"/About Me"} scroll={false}>About Me</Link></li>
+            {/* <li><Link href={"/blog"} scroll={false}>Blog</Link></li> */}
+            {/* <li><Link href={"/contact"} scroll={false}>Contact</Link></li> */}
           </ul>
         </nav>
-        <div className={`${styles.darkModeToggleButton}`}>
+        {/* <div className={`${styles.darkModeToggleButton}`}>
           <CiDark color={`${isDarkMode ? "#fff" : "#000"}`} size={28} />
           <label className={`${styles.switchLabel}`}>
             <input type="checkbox" value="" className={`${styles.switchInput}`} onChange={() => toggle()} />
           </label>
           <CiLight color={`${isDarkMode ? "#fff" : "#000"}`} size={30} />
-        </div>
+        </div> */}
       </div>
     </header>
   );

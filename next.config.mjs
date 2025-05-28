@@ -1,18 +1,29 @@
+import path from "path";
+import { fileURLToPath } from "url";
+
+// __dirname の代替定義（ESM用）
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 /** @type {import('next').NextConfig} */
-// eslint-disable-next-line @typescript-eslint/typedef
 const nextConfig = {
   images: {
     domains: ["images.microcms-assets.io"],
   },
 
-  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+  // GLSL loader
   webpack(config) {
     config.module.rules.push({
       test: /\.(glsl|vs|fs)$/,
-      use: 'raw-loader',
+      use: "raw-loader",
       exclude: /node_modules/,
     });
     return config;
+  },
+
+  // SCSS @use "@/..." エイリアス用設定
+  sassOptions: {
+    includePaths: [path.join(__dirname, "src")],
   },
 };
 

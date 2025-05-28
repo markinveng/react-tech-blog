@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import { PerspectiveCamera, Vector3 } from 'three';
 import GUI from 'lil-gui';
 
-const showGUI: boolean = true;
+const showGUI: boolean = false;
 
 const easeInOut: (t: number) => number = (t: number): number => t * t * (3 - 2 * t);
 
