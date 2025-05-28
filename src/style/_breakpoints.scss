@@ -1,0 +1,23 @@
+// ブレークポイント変数
+$breakpoint-sp: 480px;
+$breakpoint-tab: 768px;
+$breakpoint-pc: 1024px;
+
+// Mixinで使うメディアクエリ
+@mixin sp {
+  @media (max-width: #{$breakpoint-sp}) {
+    @content;
+  }
+}
+
+@mixin tab {
+  @media (max-width: #{$breakpoint-tab}) {
+    @content;
+  }
+}
+
+@mixin pc {
+  @media (min-width: #{$breakpoint-pc}) {
+    @content;
+  }
+}

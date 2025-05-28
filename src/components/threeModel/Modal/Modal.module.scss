@@ -1,0 +1,84 @@
+@use "../../../style/breakpoints" as *;
+
+.overlay {
+  position: absolute;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.modal {
+  position: absolute;
+  background: transparent;
+  overflow: auto;
+  text-align: center;
+  z-index: 1000;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  cursor: default;
+  width: 40%;
+  @include tab {
+    width: 90%;
+  }
+
+  @include sp {
+    width: 100%;
+  }
+}
+
+.modalContent {
+  position: relative;
+  max-height: 90vh;
+  margin: 0 auto;
+}
+
+.img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+.descriptionWrapper {
+  white-space: pre-line;
+  overflow-y: scroll;
+  max-height: 40vh;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  padding: 10px;
+}
+
+.closeButton {
+  position: absolute;
+  color: #000;
+  background: transparent;
+  border: 1px solid #000;
+  top: 10px;
+  right: 10px;
+  font-size: 30px;
+  border-radius: 50px;
+  display: block;
+  padding: 10px;
+  width: 55px;
+  cursor: pointer;
+  transition: background 0.5s ease, color 0.5s ease;
+  &:hover {
+    color: #fff;
+    background: #000;
+    border: 1px solid #fff;
+  }
+
+  @include tab {
+  }
+
+  @include sp {
+    font-size: 20px;
+    width: 45px;
+  }
+}

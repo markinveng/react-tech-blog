@@ -1,19 +1,19 @@
 import { Inter, Noto_Sans_JP } from "next/font/google";
 import localFont from 'next/font/local'
 
-const notojp = Noto_Sans_JP({
+const notojp: ReturnType<typeof Noto_Sans_JP> = Noto_Sans_JP({
   weight: ["400", "700"],
-  subsets: ["latin"],
+  subsets: ["latin", "latin-ext"],
   variable: "--font-notojp",
   display: "swap",
 });
 
-const inter = Inter({
+const inter: ReturnType<typeof Inter> = Inter({
   subsets: ["latin"],
   variable: "--font-playwrite-inter"
 });
 
-const playRightRO = localFont({
+const playRightRO: ReturnType<typeof localFont> = localFont({
   src: './ttf/PlaywriteRO-Regular.ttf',
   variable: "--font-playwrite-ro"
 });
