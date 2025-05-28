@@ -1,5 +1,5 @@
 import { useGLTF, useTexture } from "@react-three/drei";
-import { useEffect } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import {
   DoubleSide,
   Mesh,
@@ -10,18 +10,35 @@ import {
 } from "three";
 import * as THREE from "three";
 import { ImageItem } from "@/_libs/client";
+import { useFrame, useThree } from '@react-three/fiber';
+import { ImageData } from '@/_type/image';
 
 type Props = {
   imageItems: ImageItem[] | object | null;
+  onPlaneClick: (clickedData: ImageData) => void;
 };
 
-export default function Model({ imageItems }: Props): React.ReactElement {
+export default function Model({ imageItems, onPlaneClick }: Props): React.ReactElement {
   const { scene } = useGLTF("/models/butterfly-picture.glb");
+  const { camera, gl } = useThree();
+  const raycaster = useRef(new THREE.Raycaster());
+  const pointer = useRef(new THREE.Vector2());
+  const [modalData, setModalData] = useState<ImageData | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   // テクスチャを imageItems の img.url から読み込み
   const textures: Texture[] = useTexture(
     (imageItems as ImageItem[]).map((item: ImageItem) => item.img.url)
   );
+
+  const handlePlaneClick = useCallback((intersectedMeshName: string) => {
+    const index = parseInt(intersectedMeshName.replace('Plane', '').replace('00', ''), 10) || 0;
+    const clickedData = Array.isArray(imageItems) ? imageItems[index] : undefined;
+    if (clickedData) {
+      setModalData(clickedData);
+      setIsModalOpen(true);
+    }
+  }, [imageItems]);
 
   useEffect(() => {
     const planeNames: string[] = ["Plane", "Plane001", "Plane002", "Plane003", "Plane004"];
@@ -93,6 +110,57 @@ export default function Model({ imageItems }: Props): React.ReactElement {
       }
     });
   }, [scene, textures, imageItems]);
+
+  useEffect(() => {
+    const raycaster = new THREE.Raycaster();
+    const pointer = new THREE.Vector2();
+    const planeNames = ['Plane', 'Plane001', 'Plane002', 'Plane003', 'Plane004'];
+
+    const handleClick = (event: MouseEvent) => {
+      const canvasBounds = gl.domElement.getBoundingClientRect();
+      pointer.x = ((event.clientX - canvasBounds.left) / canvasBounds.width) * 2 - 1;
+      pointer.y = -((event.clientY - canvasBounds.top) / canvasBounds.height) * 2 + 1;
+
+      raycaster.setFromCamera(pointer, camera);
+      const intersects = raycaster.intersectObjects(scene.children, true);
+
+      if (intersects.length > 0) {
+        const clickedObject = intersects[0].object as Mesh;
+
+        if (clickedObject.name.includes('Plane')) {
+
+          const index = planeNames.indexOf(clickedObject.name);
+          const clickedData = Array.isArray(imageItems) ? imageItems[index] : undefined;
+
+          if (clickedData && onPlaneClick) {
+            onPlaneClick(clickedData);
+          }
+        }
+      }
+    };
+
+    gl.domElement.addEventListener('click', handleClick);
+    return () => gl.domElement.removeEventListener('click', handleClick);
+  }, [camera, gl, scene, imageItems, onPlaneClick]);
+
+  useEffect(() => {
+    const onPointerMove = (event: MouseEvent) => {
+      const bounds = gl.domElement.getBoundingClientRect();
+      pointer.current.x = ((event.clientX - bounds.left) / bounds.width) * 2 - 1;
+      pointer.current.y = -((event.clientY - bounds.top) / bounds.height) * 2 + 1;
+    };
+
+    gl.domElement.addEventListener('mousemove', onPointerMove);
+    return () => gl.domElement.removeEventListener('mousemove', onPointerMove);
+  }, [gl]);
+
+  useFrame(() => {
+    raycaster.current.setFromCamera(pointer.current, camera);
+    const intersects = raycaster.current.intersectObjects(scene.children, true);
+    const hasPlane = intersects.find((obj) => obj.object.name.includes('Plane'));
+
+    gl.domElement.style.cursor = hasPlane ? 'pointer' : 'default';
+  });
 
   return <primitive object={scene} />;
 }
