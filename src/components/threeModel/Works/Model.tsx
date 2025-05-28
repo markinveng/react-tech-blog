@@ -60,20 +60,26 @@ export default function Model({ imageItems }: Props): React.ReactElement {
         });
       }
 
-      // Plane, Plane001, Plane002: 写真＋テクスチャ
-      const planeNames: string[] = ['Plane', 'Plane001', 'Plane002', 'Plane003', 'Plane004',];
+      // Plane: 写真
+      const planeNames: string[] = ['Plane', 'Plane001', 'Plane002', 'Plane003', 'Plane004'];
       const planeIndex: number = planeNames.indexOf(child.name);
-      if (planeIndex !== -1 && textures[planeIndex]) {
-        const texture: Texture = textures[planeIndex] as Texture;
-        texture.wrapS = texture.wrapT = RepeatWrapping;
-        texture.flipY = false;
-        child.material = new MeshStandardMaterial({
-          map: texture,
-          color: '#ffffff',
-          //roughness: 0.2,
-          metalness: 0.1,
-          side: DoubleSide,
-        });
+      if (planeIndex !== -1) {
+        const texture: Texture | undefined = textures[planeIndex];
+        if (texture) {
+          texture.wrapS = texture.wrapT = RepeatWrapping;
+          texture.flipY = false;
+
+          child.material = new MeshStandardMaterial({
+            map: texture,
+            color: '#ffffff',
+            roughness: 0.2,
+            metalness: 0.0,
+            side: DoubleSide,
+          });
+        } else {
+          // テクスチャがない場合は非表示
+          child.visible = false;
+        }
       }
     });
   }, [scene, textures]);
