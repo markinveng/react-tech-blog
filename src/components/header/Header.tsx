@@ -16,7 +16,7 @@ export default function Header(): JSX.Element {
         <nav>
           <ul className={styles.navigationList}>
             <li><Link className={styles.navigationLink} href={"/"} scroll={false}>Works</Link></li>
-            {/* <li><Link className={styles.navigationLink} href={"/About Me"} scroll={false}>About Me</Link></li> */}
+            <li><Link className={styles.navigationLink} href={"/About Me"} scroll={false}>About Me</Link></li>
             {/* <li><Link href={"/blog"} scroll={false}>Blog</Link></li> */}
             {/* <li><Link href={"/contact"} scroll={false}>Contact</Link></li> */}
           </ul>
