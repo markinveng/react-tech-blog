@@ -1,0 +1,39 @@
+@use "../../style/breakpoints" as *;
+
+.container {
+  padding-top: 100px;
+  text-align: center;
+}
+
+.title {
+  text-align: center;
+  font-family: sicprintempspetit, sans-serif;
+  font-style: normal;
+  font-weight: 200;
+  margin-top: 20px;
+  font-size: 2.0rem;
+  @include tab {
+    font-size: 1.5rem;
+  }
+
+  @include sp {
+    font-size: 1.2rem;
+  }
+}
+
+.homeLink {
+  margin-top: 50px;
+  display: inline-block;
+  background: #151515;
+  padding: 7px 15px;
+  border-radius: 10px;
+  transition: background 0.5s ease, color 0.5s ease;
+  font-family: "gesta", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  &:hover {
+    background: #fff;
+    color: #151515;
+  }
+}
+
