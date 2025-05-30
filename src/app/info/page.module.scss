@@ -1,3 +1,5 @@
+@use "../../style/breakpoints" as *;
+
 .canvasWrapper {
   width: 100vw;
   height: 100vh;
@@ -31,8 +33,20 @@
 }
 
 .info {
-  padding-top: 10%;
+  padding-top: 120px;
   padding-left: 30%;
+  max-width: 500px;
+  box-sizing: content-box;
+  max-width: 450px;
+  @include tab {
+    max-width: 400px;
+    padding-left: 15%;
+  }
+
+  @include sp { 
+    padding-left: 10%;
+    max-width: 300px;
+  }
 }
 
 .title {
