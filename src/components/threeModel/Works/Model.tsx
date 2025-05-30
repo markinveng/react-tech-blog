@@ -1,5 +1,5 @@
 import { useGLTF, useTexture } from "@react-three/drei";
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import {
   DoubleSide,
   Mesh,
@@ -24,10 +24,12 @@ export default function Model({ imageItems, onPlaneClick }: Props): React.ReactE
   const raycaster = useRef(new THREE.Raycaster());
   const pointer = useRef(new THREE.Vector2());
 
+  const urls = useMemo(() => {
+    return (imageItems as ImageItem[]).map((item: ImageItem) => item.img.url);
+  }, [imageItems]);
+
   // テクスチャを imageItems の img.url から読み込み
-  const textures: Texture[] = useTexture(
-    (imageItems as ImageItem[]).map((item: ImageItem) => item.img.url)
-  );
+  const textures: Texture[] = useTexture(urls);
 
   useEffect(() => {
     const planeNames: string[] = ["Plane", "Plane001", "Plane002", "Plane003", "Plane004"];
@@ -142,6 +144,13 @@ export default function Model({ imageItems, onPlaneClick }: Props): React.ReactE
     gl.domElement.addEventListener('mousemove', onPointerMove);
     return () => gl.domElement.removeEventListener('mousemove', onPointerMove);
   }, [gl]);
+
+  useEffect(() => {
+    textures.forEach((texture) => {
+      texture.flipY = false;
+      texture.needsUpdate = true;
+    });
+  }, [textures]);
 
   useFrame(() => {
     raycaster.current.setFromCamera(pointer.current, camera);
