@@ -22,7 +22,6 @@ export default function WorksModel(): React.ReactElement | null {
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/typedef
     getImagesByPage(currentPage, 5).then(({ contents, totalCount }) => {
-      console.log(contents);
 
       setImageItems(contents);
       setTotalPages(Math.ceil(totalCount / 5));
