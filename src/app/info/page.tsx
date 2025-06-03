@@ -2,7 +2,7 @@
 'use client';
 
 import { Canvas } from '@react-three/fiber';
-import { Suspense } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { useGLTF } from '@react-three/drei';
 import ButterflyParticles from '@/components/threeModel/AboutMe/ButterflyParticles';
 import CameraControls from '@/components/threeModel/AboutMe/CameraControl';
@@ -14,10 +14,19 @@ function ButterflyModel(): JSX.Element {
 }
 
 export default function InfoPage(): JSX.Element {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect((): void | (() => void) => {
+    const timeout: ReturnType<typeof setTimeout> = setTimeout(() => {
+      setIsVisible(true);
+    }, 1);
+
+    return () => clearTimeout(timeout);
+  }, []);
   return (
     <>
       <main>
-        <div className={styles.container}>
+        <div className={`${styles.container} ${isVisible ? styles.isVisible : ''}`} >
           <div className={styles.infoWrapper}>
             <div className={styles.info}>
               <h1 className={styles.title}>Info</h1>
