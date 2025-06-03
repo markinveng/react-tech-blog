@@ -86,6 +86,7 @@ export default function Model({ imageItems, onPlaneClick }: Props): React.ReactE
         if (texture) {
           texture.wrapS = texture.wrapT = RepeatWrapping;
           texture.flipY = false;
+          texture.repeat.x = -1;
 
           child.visible = true;
           child.material = new MeshStandardMaterial({
