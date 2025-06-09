@@ -33,7 +33,7 @@ export default function InfoPage(): JSX.Element {
               <div className={styles.detailContainer}>
                 <h2 className={styles.infoSubTitle}>About Me</h2>
                 <p className={styles.description}>
-                  Web開発を主軸に、UI演出やインタラクションデザインの制作を行なっています。<br />また映像制作やイラスト制作にも取り組んでいます。
+                  Web開発を主軸に、UI演出やインタラクションデザインの制作を行なっています。<br />また映像制作やイラスト制作にも取り組んでいます。<br />サイト名の「Maiami」はヨルムンガンドのDr.マイアミ(蝶好き)から取ってきてます。
                 </p>
                 <div className={styles.linkWrapper}>
                   <a className={styles.link} href="https://x.com/MaiamiDTM" target='_blank'>X(Twitter)</a>
@@ -49,6 +49,19 @@ export default function InfoPage(): JSX.Element {
                 <div className={styles.linkWrapper}>
                   <a className={styles.link} href="https://forms.gle/qDG4QisiqTzj2zsR8" target='_blank'>Google Form</a>
                 </div>
+              </div>
+              <div className={styles.detailContainer}>
+                <h2 className={styles.infoSubTitle}>Available</h2>
+                <p className={styles.description}>
+                  使用技術
+                  <br />
+                  HTML, CSS, JavaScript, TypeScript, React, Next.js, Vue.js, Nuxt.js, Three.js, React Fiber ...etc
+                </p>
+                <p className={styles.description}>
+                  使用ツール
+                  <br />
+                  VS Code, Figma, Adobe XD, PhotoShop, Illustrator, After Effects, Blender, Ableton Live, Clip Studio ...etc
+                </p>
               </div>
             </div>
           </div>
