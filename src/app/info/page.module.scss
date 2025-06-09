@@ -45,6 +45,8 @@
   max-width: 450px;
   max-height: 67%;
   overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
   @include tab {
     max-width: 400px;
     padding-left: 15%;
