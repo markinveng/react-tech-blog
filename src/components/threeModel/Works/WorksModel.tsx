@@ -11,6 +11,7 @@ import ButterflyAnimation from './ButterflyAnimation';
 import SnowParticles from './SnowParticles';
 import { Pagination } from '@/components/Pagination/Pagination';
 import Modal from '../Modal/Modal';
+import LoaderOverlay from '@/components/Loader/Loader';
 
 export default function WorksModel(): React.ReactElement | null {
   const [currentPage, setCurrentPage] = useState(1);
@@ -18,6 +19,11 @@ export default function WorksModel(): React.ReactElement | null {
   const [totalPages, setTotalPages] = useState(1);
   const [modalData, setModalData] = useState<ImageData | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [showLoader, setShowLoader] = useState(true);
+
+  const handleLoadFinish: () => void = () => {
+    setShowLoader(true);
+  };
 
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/typedef
@@ -32,6 +38,7 @@ export default function WorksModel(): React.ReactElement | null {
 
   return (
     <div style={{ width: '100vw', height: '100vh', position: 'relative' }}>
+      {showLoader && <LoaderOverlay onFinish={handleLoadFinish} />}
       {/* ページネーションUIを前面に */}
       <Pagination
         currentPage={currentPage}

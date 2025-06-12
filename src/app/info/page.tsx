@@ -7,6 +7,7 @@ import { useGLTF } from '@react-three/drei';
 import ButterflyParticles from '@/components/threeModel/AboutMe/ButterflyParticles';
 import CameraControls from '@/components/threeModel/AboutMe/CameraControl';
 import styles from '@/app/info/page.module.scss';
+import LoaderOverlay from '@/components/Loader/Loader';
 
 function ButterflyModel(): JSX.Element {
   const { scene } = useGLTF('/models/butterfly-shader.glb');
@@ -15,6 +16,11 @@ function ButterflyModel(): JSX.Element {
 
 export default function InfoPage(): JSX.Element {
   const [isVisible, setIsVisible] = useState(false);
+  const [showLoader, setShowLoader] = useState(true);
+
+  const handleLoadFinish: () => void = () => {
+    setShowLoader(true);
+  };
 
   useEffect((): void | (() => void) => {
     const timeout: ReturnType<typeof setTimeout> = setTimeout(() => {
@@ -25,6 +31,7 @@ export default function InfoPage(): JSX.Element {
   }, []);
   return (
     <>
+    {showLoader && <LoaderOverlay onFinish={handleLoadFinish} />}
       <main>
         <div className={`${styles.container} ${isVisible ? styles.isVisible : ''}`} >
           <div className={styles.infoWrapper}>
