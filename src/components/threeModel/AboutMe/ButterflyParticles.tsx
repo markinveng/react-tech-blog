@@ -1,16 +1,16 @@
 import { useLoader, useFrame, extend, ReactThreeFiber } from '@react-three/fiber';
 import { useRef, useMemo, useEffect } from 'react';
 import * as THREE from 'three';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import { GLTFLoader, GLTF } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import vertex from '@/shaders/butterfly/butterfly.vert.glsl';
 import fragment from '@/shaders/butterfly/butterfly.frag.glsl';
 import { shaderMaterial } from '@react-three/drei';
 
-const ButterflyShaderMaterial = shaderMaterial(
+const ButterflyShaderMaterial: typeof THREE.ShaderMaterial & { uTime: number } = shaderMaterial(
   { uTime: 0, transparent: true },
   vertex,
   fragment
-);
+) as unknown as typeof THREE.ShaderMaterial & { uTime: number };
 
 extend({ ButterflyShaderMaterial });
 
@@ -20,21 +20,25 @@ declare module '@react-three/fiber' {
   }
 }
 
-export default function ButterflyParticles() {
-  const gltf = useLoader(GLTFLoader, '/models/butterfly-shader.glb');
-  const mesh = gltf.scene.children[0] as THREE.Mesh;
+export default function ButterflyParticles(): JSX.Element {
+  const gltf: GLTF = useLoader(GLTFLoader, '/models/butterfly-shader.glb');
+  const mesh: THREE.Mesh | null = gltf.scene.children[0] instanceof THREE.Mesh ? gltf.scene.children[0] : null;
 
-  const materialRef = useRef<any>(null);
+  // eslint-disable-next-line @typescript-eslint/typedef
+  const materialRef = useRef<(typeof THREE.ShaderMaterial & { uTime: number }) | null>(null);
 
   const { positions, seeds } = useMemo(() => {
-    const geometry = mesh.geometry as THREE.BufferGeometry;
-    const posAttr = geometry.attributes.position;
-    const count = posAttr.count;
+    if (!mesh) {
+      throw new Error('Mesh is null. Ensure the GLTF model is loaded correctly.');
+    }
+    const geometry: THREE.BufferGeometry = mesh.geometry as THREE.BufferGeometry;
+    const posAttr: THREE.BufferAttribute = geometry.attributes.position as THREE.BufferAttribute;
+    const count: number = posAttr.count;
 
-    const positions = new Float32Array(count * 3);
-    const seeds = new Float32Array(count);
+    const positions: Float32Array = new Float32Array(count * 3);
+    const seeds: Float32Array = new Float32Array(count);
 
-    for (let i = 0; i < count; i++) {
+    for (let i: number = 0; i < count; i++) {
       positions[i * 3 + 0] = posAttr.getX(i);
       positions[i * 3 + 1] = posAttr.getY(i);
       positions[i * 3 + 2] = posAttr.getZ(i);
@@ -42,16 +46,16 @@ export default function ButterflyParticles() {
     }
 
     return { positions, seeds };
-  }, [mesh.geometry]);
+  }, [mesh]);
 
-  useFrame(({ clock }) => {
+  useFrame(({ clock }: { clock: THREE.Clock }) => {
     if (materialRef.current) {
       materialRef.current.uTime = clock.getElapsedTime();
     }
   });
 
   useEffect(() => {
-    gltf.scene.traverse((child) => {
+    gltf.scene.traverse((child: THREE.Object3D) => {
       if (child instanceof THREE.Mesh) {
         child.visible = false; // ← モデルの表示を完全にOFFにする
       }

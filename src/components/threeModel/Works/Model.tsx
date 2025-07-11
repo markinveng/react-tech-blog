@@ -21,10 +21,10 @@ type Props = {
 export default function Model({ imageItems, onPlaneClick }: Props): React.ReactElement {
   const { scene } = useGLTF("/models/butterfly-picture.glb");
   const { camera, gl } = useThree();
-  const raycaster = useRef(new THREE.Raycaster());
-  const pointer = useRef(new THREE.Vector2());
+  const raycaster: React.MutableRefObject<THREE.Raycaster> = useRef<THREE.Raycaster>(new THREE.Raycaster());
+  const pointer: React.MutableRefObject<THREE.Vector2> = useRef<THREE.Vector2>(new THREE.Vector2());
 
-  const urls = useMemo(() => {
+  const urls: string[] = useMemo(() => {
     return (imageItems as ImageItem[]).map((item: ImageItem) => item.img.url);
   }, [imageItems]);
 
@@ -104,25 +104,25 @@ export default function Model({ imageItems, onPlaneClick }: Props): React.ReactE
   }, [scene, textures, imageItems]);
 
   useEffect(() => {
-    const raycaster = new THREE.Raycaster();
-    const pointer = new THREE.Vector2();
-    const planeNames = ['Plane', 'Plane001', 'Plane002', 'Plane003', 'Plane004'];
+    const raycaster: THREE.Raycaster = new THREE.Raycaster();
+    const pointer: THREE.Vector2 = new THREE.Vector2();
+    const planeNames: string[] = ['Plane', 'Plane001', 'Plane002', 'Plane003', 'Plane004'];
 
-    const handleClick = (event: MouseEvent) => {
-      const canvasBounds = gl.domElement.getBoundingClientRect();
+    const handleClick: (event: MouseEvent) => void = (event: MouseEvent) => {
+      const canvasBounds: DOMRect = gl.domElement.getBoundingClientRect();
       pointer.x = ((event.clientX - canvasBounds.left) / canvasBounds.width) * 2 - 1;
       pointer.y = -((event.clientY - canvasBounds.top) / canvasBounds.height) * 2 + 1;
 
       raycaster.setFromCamera(pointer, camera);
-      const intersects = raycaster.intersectObjects(scene.children, true);
+      const intersects: THREE.Intersection[] = raycaster.intersectObjects(scene.children, true);
 
       if (intersects.length > 0) {
-        const clickedObject = intersects[0].object as Mesh;
+        const clickedObject: Mesh = intersects[0].object as Mesh;
 
         if (clickedObject.name.includes('Plane')) {
 
-          const index = planeNames.indexOf(clickedObject.name);
-          const clickedData = Array.isArray(imageItems) ? imageItems[index] : undefined;
+          const index: number = planeNames.indexOf(clickedObject.name);
+          const clickedData: ImageItem | undefined = Array.isArray(imageItems) ? imageItems[index] : undefined;
 
           if (clickedData && onPlaneClick) {
             onPlaneClick(clickedData);
@@ -132,22 +132,22 @@ export default function Model({ imageItems, onPlaneClick }: Props): React.ReactE
     };
 
     gl.domElement.addEventListener('click', handleClick);
-    return () => gl.domElement.removeEventListener('click', handleClick);
+    return (): void => gl.domElement.removeEventListener('click', handleClick);
   }, [camera, gl, scene, imageItems, onPlaneClick]);
 
   useEffect(() => {
-    const onPointerMove = (event: MouseEvent) => {
-      const bounds = gl.domElement.getBoundingClientRect();
+    const onPointerMove: (event: MouseEvent) => void = (event: MouseEvent): void => {
+      const bounds: DOMRect = gl.domElement.getBoundingClientRect();
       pointer.current.x = ((event.clientX - bounds.left) / bounds.width) * 2 - 1;
       pointer.current.y = -((event.clientY - bounds.top) / bounds.height) * 2 + 1;
     };
 
     gl.domElement.addEventListener('mousemove', onPointerMove);
-    return () => gl.domElement.removeEventListener('mousemove', onPointerMove);
+    return (): void => gl.domElement.removeEventListener('mousemove', onPointerMove);
   }, [gl]);
 
   useEffect(() => {
-    textures.forEach((texture) => {
+    textures.forEach((texture: Texture) => {
       texture.flipY = false;
       texture.needsUpdate = true;
     });
@@ -155,8 +155,8 @@ export default function Model({ imageItems, onPlaneClick }: Props): React.ReactE
 
   useFrame(() => {
     raycaster.current.setFromCamera(pointer.current, camera);
-    const intersects = raycaster.current.intersectObjects(scene.children, true);
-    const hasPlane = intersects.find((obj) => obj.object.name.includes('Plane'));
+    const intersects: THREE.Intersection[] = raycaster.current.intersectObjects(scene.children, true);
+    const hasPlane: THREE.Intersection | undefined = intersects.find((obj: THREE.Intersection) => obj.object.name.includes('Plane'));
 
     gl.domElement.style.cursor = hasPlane ? 'pointer' : 'default';
   });

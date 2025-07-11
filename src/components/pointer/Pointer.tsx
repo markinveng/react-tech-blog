@@ -1,19 +1,19 @@
 "use client"
 import styles from "@/components/pointer/pointer.module.scss"
-import { SetStateAction, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
-export default function Pointer() {
+export default function Pointer(): JSX.Element {
   const [mouseX, setMouseX] = useState(0);
   const [mouseY, setMouseY] = useState(0);
 
   useEffect(() => {
-    const mouseMoveListener = (event: { clientX: SetStateAction<number>; clientY: SetStateAction<number>; }) => {
+    const mouseMoveListener: (event: MouseEvent) => void = (event: MouseEvent) => {
       setMouseX(event.clientX);
       setMouseY(event.clientY);
     };
 
     window.addEventListener("mousemove", mouseMoveListener);
-    return () => {
+    return (): void => {
       window.removeEventListener("mousemove", mouseMoveListener);
     };
   }, []);

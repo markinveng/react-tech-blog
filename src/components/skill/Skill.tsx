@@ -8,7 +8,7 @@ import { VscVscode } from "react-icons/vsc"
 
 
 
-export default function Skill() {
+export default function Skill(): JSX.Element {
   return (
     <>
       <section className={`${styles.skill}`}>

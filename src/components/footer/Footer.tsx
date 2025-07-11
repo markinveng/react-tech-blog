@@ -4,7 +4,7 @@ import styles from "@/components/footer/Footer.module.scss";
 interface FooterProps {
   className?: string;
 }
-export default function Footer({ className }: FooterProps) {
+export default function Footer({ className }: FooterProps): JSX.Element {
 
   return (
     <>

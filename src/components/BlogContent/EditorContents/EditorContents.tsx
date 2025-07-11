@@ -40,14 +40,14 @@ export default function Parsed({ rawHtml }: EditorContentsProps): string | JSX.E
           domNode.attribs.class === "iframely-embed"
         ) {
           // 1階層目: class="iframely-responsive" の <div> を探す
-          const responsiveDiv: Element | undefined = domNode.children.find(
-            (child) => child instanceof Element && child.name === "div"
+          const responsiveDiv: Element | undefined = (domNode.children as DOMNode[]).find(
+            (child: DOMNode): child is Element => isElement(child) && child.name === "div"
           ) as Element | undefined;
           if (!responsiveDiv) return null; // 念のためチェック
 
           // 2階層目: <a> を探す
-          const iframeElement: Element | undefined = responsiveDiv.children.find(
-            (child) => child instanceof Element && child.name === "a"
+          const iframeElement: Element | undefined = (responsiveDiv.children as DOMNode[]).find(
+            (child: DOMNode): child is Element => isElement(child) && child.name === "a"
           ) as Element | undefined;
 
           if (!iframeElement?.attribs["data-iframely-url"]) return null; // 念のためチェック

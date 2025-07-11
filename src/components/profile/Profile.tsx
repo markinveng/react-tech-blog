@@ -10,7 +10,7 @@ import Link from 'next/link';
 import { useDarkMode } from '@/_libs/darkmode';
 import styles from "@/components/profile/profile.module.scss";
 
-export default function Profile() {
+export default function Profile(): JSX.Element {
   const { isDarkMode } = useDarkMode()
   return (
     <aside className={`${styles.content}`}>

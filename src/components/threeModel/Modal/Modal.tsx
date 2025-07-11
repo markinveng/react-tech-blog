@@ -1,5 +1,6 @@
 import styles from './Modal.module.scss';
 import { AnimatePresence, motion } from 'framer-motion';
+import Image from 'next/image';
 
 type ModalProps = {
   isOpen: boolean;
@@ -25,7 +26,7 @@ export default function Modal({ isOpen, onClose, data }: ModalProps): JSX.Elemen
         >
           <motion.div
             className={styles.modal}
-            onClick={(e) => e.stopPropagation()}
+            onClick={(e: React.MouseEvent) => e.stopPropagation()}
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
@@ -36,12 +37,11 @@ export default function Modal({ isOpen, onClose, data }: ModalProps): JSX.Elemen
                 className={styles.imgLink}
                 href={data.url}
                 target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img className={styles.img} src={data.img.url} alt="modal image" />
+                rel="noopener noreferrer">
+                <Image className={styles.img} src={data.img.url} alt="modal image" width={600} height={600} />
               </a>
               <div className={styles.descriptionWrapper}>
-                {data.description?.split('\n').map((line, index) => (
+                {data.description?.split('\n').map((line: string, index: number) => (
                   <p key={index}>{line}</p>
                 ))}
               </div>
