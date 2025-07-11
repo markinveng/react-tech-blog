@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import '@/style/globals.scss';
 import Header from "@/components/header/Header";
 import AdobeFontLoader from "@/components/AdobeFontLoarder/AdobeFontLoader";
+import Pointer from "@/components/pointer/Pointer";
 //import { DarkModeProvider } from "@/_libs/darkmode";
 //import Pointer from "@/components/pointer/Pointer";
 
@@ -25,7 +26,7 @@ export default function RootLayout({
       {/* <DarkModeProvider> */}
       <body className="dark" >
         <AdobeFontLoader />
-        {/* <Pointer /> */}
+        <Pointer />
         <Header />
         {children}
       </body>
