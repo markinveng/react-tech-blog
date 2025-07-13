@@ -43,7 +43,7 @@ export default function InfoPage(): JSX.Element {
                   Web開発を主軸に、UI演出やインタラクションデザインの制作を行なっています。<br />また映像制作やイラスト制作にも取り組んでいます。<br />サイト名の「Maiami」はヨルムンガンドのDr.マイアミ(蝶好き)から取ってきてます。
                 </p>
                 <div className={styles.linkWrapper}>
-                  <a className={styles.link} href="https://x.com/MaiamiDTM" target='_blank'>X(Twitter)</a>
+                  <a className={styles.link} href="https://x.com/maiami_meeeee" target='_blank'>X(Twitter)</a>
                 </div>
               </div>
               <div className={styles.detailContainer}>
