@@ -23,10 +23,6 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
   cursor: default;
-  width: 40%;
-  @include tab {
-    width: 90%;
-  }
 
   @include sp {
     width: 100%;
