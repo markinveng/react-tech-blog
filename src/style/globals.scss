@@ -21,6 +21,16 @@ a {
   }
 }
 
+::selection {
+  background-color: transparent;
+  color: #c31cd1;
+}
+
+::-moz-selection {
+  background-color: transparent;
+  color: #c31cd1;
+}
+
 // Swiper
 .swiper-button-prev,
 .swiper-button-next {

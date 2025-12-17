@@ -2,15 +2,12 @@ import type { Metadata } from "next";
 import '@/style/globals.scss';
 import Header from "@/components/header/Header";
 import AdobeFontLoader from "@/components/AdobeFontLoarder/AdobeFontLoader";
-import Pointer from "@/components/pointer/Pointer";
-//import { DarkModeProvider } from "@/_libs/darkmode";
-//import Pointer from "@/components/pointer/Pointer";
 
 
 
 export const metadata: Metadata = {
-  title: "Maiami",
-  description: "Maiamiのポートフォリオサイトです。私がこれまでに手がけた作品や、使用しているツールや技術をまとめています。",
+  title: "水",
+  description: "Portfolio site of Rhetenor",
 };
 
 export default function RootLayout({
@@ -23,14 +20,10 @@ export default function RootLayout({
       <head>
         <link rel="stylesheet" href="https://use.typekit.net/igd0gfy.css" />
       </head>
-      {/* <DarkModeProvider> */}
       <body className="dark" >
         <AdobeFontLoader />
-        <Pointer />
-        <Header />
         {children}
       </body>
-      {/* </DarkModeProvider> */}
     </html>
   );
 }

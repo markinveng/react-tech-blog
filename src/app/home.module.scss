@@ -1,3 +1,18 @@
+.main {
+  min-height: 100vh;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: center;
+  margin: 50px auto;
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .swiperWrapper {
   position: relative;
 }
